@@ -59,5 +59,4 @@ Zone settings outside the repo: www to apex Redirect Rule; allow the AI crawlers
 ## Not built yet
 
 - Per-page OG images (one default image is used).
-- Phase 3 comparisons: Sage X3 vs Business Central, Sage X3 vs Acumatica.
 - US variants and hreflang (phase 2).
