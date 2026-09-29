@@ -1,0 +1,22 @@
+{
+  "name": "sagereseller",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/check-dist.mjs",
+    "preview": "astro preview",
+    "check:content": "node scripts/check-content.mjs",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.0.2",
+    "astro": "^7.3.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260929.1",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.2"
+  }
+}
