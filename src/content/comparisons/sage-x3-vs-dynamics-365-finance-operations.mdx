@@ -5,55 +5,53 @@ competitor: "Dynamics 365 F&O"
 competitorVendor: "Microsoft"
 primaryQuery: "sage x3 vs dynamics 365 f&o"
 bestFor: "Mid-market manufacturers and distributors"
-description: "Sage X3 vs Microsoft Dynamics 365 Finance and Supply Chain Management for manufacturers and distributors: fit, deployment choice and cost drivers."
-related: sage-x3-vs-netsuite
+description: "Sage X3 vs Microsoft Dynamics 365 Finance and Supply Chain Management: manufacturing, warehousing, deployment, Making Tax Digital and licensing compared."
+related: sage-x3-vs-business-central
 verdict:
   chooseSage:
-    - "You are a mid-market manufacturer or distributor that needs process or discrete manufacturing."
-    - "You want the choice of cloud, private hosting or on-premise."
-    - "You want an ERP sized for the mid-market, with a lighter implementation and running cost."
+    - "You need the choice of SaaS, private cloud or on-premise deployment."
+    - "You run process or discrete manufacturing and want it in the same system as finance."
+    - "You want lot and serial traceability with batch genealogy in the core product."
   chooseCompetitor:
-    - "You are a large, global enterprise with many countries and complex supply chains."
-    - "Your IT strategy is built on Microsoft Azure, Microsoft 365 and the Power Platform."
-    - "You have an internal IT team able to own a large ERP programme."
+    - "Your IT strategy is built on Microsoft 365, Azure and the Power Platform."
+    - "You need asset maintenance and transportation management alongside manufacturing."
+    - "You want Copilot-assisted planning, budgeting and forecasting in the finance application."
 table:
   - feature: "Deployment"
-    sage: "Cloud, private hosting or on-premise"
+    sage: "SaaS, private cloud or on-premise"
     sageState: strong
-    competitor: "Cloud on Microsoft Azure"
-  - feature: "Typical customer size"
-    sage: "Mid-market to upper mid-market"
-    competitor: "Upper mid-market to enterprise"
-  - feature: "Core strengths"
-    sage: "Manufacturing, distribution and finance in one mid-market ERP"
-    competitor: "Enterprise breadth across finance and supply chain"
-  - feature: "Multi-entity and consolidation"
-    sage: "Multi-company, multi-site and multi-legislation"
+    competitor: "Check deployment options with Microsoft"
+  - feature: "Manufacturing"
+    sage: "Process and discrete manufacturing"
     sageState: strong
-    competitor: "Multi-company and global consolidation"
+    competitor: "Complex manufacturing in Supply Chain Management"
     competitorState: strong
-  - feature: "Inventory and manufacturing"
-    sage: "Process and discrete manufacturing, MRP, warehousing and traceability"
+  - feature: "Warehousing and traceability"
+    sage: "Advanced WMS; lot and serial tracking with batch genealogy"
     sageState: strong
-    competitor: "Extensive manufacturing and supply chain management"
+    competitor: "Warehousing and transportation management"
     competitorState: strong
-  - feature: "UK localisation and MTD"
-    sage: "UK legislation with Making Tax Digital for VAT"
+  - feature: "Multi-country"
+    sage: "Multi-site, multi-currency, multi-country and legislations"
     sageState: strong
-    competitor: "UK localisation with Making Tax Digital for VAT"
+    competitor: "Global financial operations"
     competitorState: strong
-  - feature: "UK partner and support"
-    sage: "Specialist UK Sage X3 partners"
-    competitor: "Microsoft partners, often large systems integrators"
-  - feature: "Typical implementation"
-    sage: "Around six months for a fixed-scope start (Mysoft experience); longer for extended scope"
-    competitor: "Usually a longer programme with a larger project team"
-  - feature: "Pricing model"
-    sage: "Subscription or licence, by users and modules"
-    competitor: "Published per-user monthly pricing with minimums"
-  - feature: "Ecosystem"
-    sage: "Sage Marketplace and specialist add-ons, including X3CloudDocs"
-    competitor: "Microsoft AppSource, Azure and the Power Platform"
+  - feature: "Making Tax Digital for VAT"
+    sage: "Supported"
+    sageState: strong
+    competitor: "Submits VAT returns to HMRC"
+    competitorState: strong
+  - feature: "Microsoft integration"
+    sage: "Through integrations"
+    sageState: possible
+    competitor: "Connects with Microsoft 365, Azure and the Power Platform"
+    competitorState: strong
+  - feature: "Licensing"
+    sage: "Quoted"
+    competitor: "Named-user subscriptions; UK prices published"
+  - feature: "Delivery with Mysoft"
+    sage: "Published options from 80 to 140 service days (six to twelve months)"
+    competitor: "Ask your partner for a plan"
 questions:
   - "How many manufacturers or distributors of our size have you implemented in the last two years?"
   - "Which of our processes will be standard, and which need configuration or development?"
@@ -61,26 +59,66 @@ questions:
   - "What is the five-year cost, including licences, hosting, support and upgrades?"
   - "How will upgrades be handled, and how often?"
 faqs:
-  - q: "Is Sage X3 an enterprise ERP?"
-    a: "Sage X3 is aimed at the mid-market and upper mid-market. It covers the same core areas as enterprise ERP (finance, supply chain, manufacturing and distribution) but is sized for businesses that do not need a large internal IT function to run it."
-  - q: "Which is faster to implement, Sage X3 or Dynamics 365?"
-    a: "For a mid-market manufacturer or distributor, Sage X3 projects are usually shorter and need a smaller team. Dynamics 365 Finance and Supply Chain Management projects tend to be larger programmes. Scope and data readiness matter more than the product."
   - q: "Can Sage X3 run in the cloud?"
-    a: "Yes. Sage X3 can run in the cloud, in private hosting or on-premise, which gives businesses with specific data or integration requirements more choice."
-  - q: "Is Dynamics 365 Business Central an alternative to Sage X3?"
-    a: "For smaller distributors and light manufacturers, yes. For process manufacturing, multi-site warehousing or complex traceability, Sage X3 usually offers more depth. See our comparison of Sage X3 and Business Central."
+    a: "Yes. Sage X3 is available as a fully managed SaaS offering, and also supports private cloud and on-premises deployment."
+  - q: "Do both support Making Tax Digital for VAT?"
+    a: "Yes. Sage's knowledgebase covers Making Tax Digital for Sage X3, and Microsoft documents Making Tax Digital VAT submission for Dynamics 365 Finance."
+  - q: "How long does a Sage X3 implementation take?"
+    a: "Mysoft publishes three delivery options: 80 service days over six calendar months (Kickstart, which excludes manufacturing), 110 service days over nine months, and 140 service days over twelve months, which include manufacturing."
+  - q: "Is Business Central an alternative to Sage X3?"
+    a: "For smaller businesses it can be. See our comparison of Sage X3 and Business Central."
 sources:
-  - title: "Sage X3"
+  - title: "Sage X3 ERP for manufacturing and distribution"
     publisher: "Sage"
-    url: "https://www.sage.com/en-gb/products/sage-x3/"
+    url: "https://www.sage.com/en-us/sage-business-cloud/sage-x3/"
     accessed: 2026-09-29
-  - title: "Dynamics 365 Finance"
-    publisher: "Microsoft"
-    url: "https://www.microsoft.com/en-gb/dynamics-365/products/finance"
+  - title: "Sage X3 for process manufacturing"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-gb/sage-business-cloud/sage-x3/industry/process-manufacturing/"
+    accessed: 2026-09-29
+  - title: "Sage X3 for discrete manufacturing"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-gb/sage-business-cloud/sage-x3/industry/manufacturing/"
+    accessed: 2026-09-29
+  - title: "Sage X3 Warehousing"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-ae/sage-business-cloud/sage-x3/complementary-solutions/sage-x3-warehousing/"
+    accessed: 2026-09-29
+  - title: "The secret ingredient to effective traceability and efficiency: Sage X3"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-us/blog/traceability-efficiency-sage-x3/"
+    accessed: 2026-09-29
+  - title: "Is Sage X3 compliant with Making Tax Digital?"
+    publisher: "Sage Knowledgebase"
+    url: "https://gb-kb.sage.com/portal/app/portlets/results/view2.jsp?k2dockey=200427112505068"
+    accessed: 2026-09-29
+  - title: "Mysoft's implementation methods for Sage X3"
+    publisher: "Mysoft"
+    mysoftKey: "mysoft-methods"
     accessed: 2026-09-29
   - title: "Dynamics 365 Supply Chain Management"
     publisher: "Microsoft"
-    url: "https://www.microsoft.com/en-gb/dynamics-365/products/supply-chain-management"
+    url: "https://www.microsoft.com/en-us/dynamics-365/products/supply-chain-management"
+    accessed: 2026-09-29
+  - title: "Dynamics 365 Finance"
+    publisher: "Microsoft"
+    url: "https://www.microsoft.com/en-us/dynamics-365/products/finance"
+    accessed: 2026-09-29
+  - title: "What is Dynamics 365"
+    publisher: "Microsoft"
+    url: "https://www.microsoft.com/en-us/dynamics-365/what-is-dynamics-365"
+    accessed: 2026-09-29
+  - title: "Finance pricing"
+    publisher: "Microsoft"
+    url: "https://www.microsoft.com/en-gb/dynamics-365/products/finance/pricing"
+    accessed: 2026-09-29
+  - title: "Dynamics 365 licensing guidance"
+    publisher: "Microsoft"
+    url: "https://www.microsoft.com/licensing/guidance/Dynamics-365"
+    accessed: 2026-09-29
+  - title: "Making Tax Digital: VAT return submission in the United Kingdom"
+    publisher: "Microsoft Learn"
+    url: "https://learn.microsoft.com/en-us/dynamics365/finance/localizations/united-kingdom/emea-gbr-mtd-vat-integration"
     accessed: 2026-09-29
 author: jamie-watts
 published: 2026-09-29
@@ -89,29 +127,29 @@ nextReview: 2026-12-29
 region: [uk]
 ctaLink: mysoft-x3
 phase: 1
+verified: true
 ---
 import MysoftLink from '../../components/MysoftLink.astro';
 
 ## Where Dynamics 365 Finance and Operations is stronger
 
-Microsoft's enterprise ERP (now sold as Dynamics 365 Finance and Dynamics 365 Supply Chain Management) is built for scale. Large, global groups with many countries, complex supply chains and demanding compliance needs will find very broad functional coverage.
+Microsoft's enterprise ERP is now sold as Dynamics 365 Finance and Dynamics 365 Supply Chain Management. Microsoft lists Supply Chain Management capabilities spanning product information management, forecasting, planning, inventory, sales and procurement, as well as complex manufacturing, asset maintenance, warehousing, transportation management and costing. Finance adds planning, budgeting and forecasting with Copilot.
 
-It also fits naturally into a Microsoft-first IT estate. If your data platform is on Azure, your teams use Microsoft 365 and your developers build on the Power Platform, Dynamics 365 gives you one technology stack.
+The Dynamics 365 applications connect with Microsoft 365, Azure and the Power Platform, which suits an IT estate that is standardising on Microsoft.
 
 It is a sensible choice when:
 
-- You operate at enterprise scale across many countries.
-- You have, or plan to build, an internal team to own the ERP.
 - Microsoft alignment is a strategic requirement for IT.
+- You need asset maintenance and transportation management in the same system.
 
 ## Where Sage X3 is stronger
 
-Sage X3 is sized for the mid-market. It covers finance, purchasing, sales, stock, warehousing and manufacturing (both process and discrete) in one system, without the programme overhead that often comes with enterprise ERP.
+Sage X3 gives you a choice of deployment: a fully managed SaaS offering, private cloud or on-premises. That matters for businesses with plant-floor integrations, data residency requirements or an existing hosting strategy.
 
-Deployment choice is a real difference. Sage X3 can run in the cloud, in private hosting or on-premise, which matters to businesses with plant-floor integrations, data residency requirements or an existing hosting strategy.
+It supports both process and discrete manufacturing, and Sage lists advanced warehouse management, manufacturing planning and end-to-end batch genealogy. Lot and serial numbers can be tracked to their final destination, with expiry dates calculated as required.
 
-In Mysoft's experience, mid-market manufacturers and distributors reach go-live faster and with a smaller project team on Sage X3, and the running cost is lower. <MysoftLink to="mysoft-rapid-deploy" position="body">Mysoft's fixed-scope Kickstart approach to Sage X3</MysoftLink> is designed for exactly that.
+Mysoft publishes its <MysoftLink to="mysoft-methods" position="body">Sage X3 delivery options</MysoftLink>: from 80 service days over six calendar months (Kickstart, which excludes manufacturing) to 140 service days over twelve months.
 
 ## Cost and implementation
 
-Microsoft publishes per-user prices for Dynamics 365, with minimum licence counts. Sage X3 is quoted by users and modules. In both cases, licences are only part of the cost: implementation, hosting, support and upgrades usually decide the five-year total. See our [ERP total cost of ownership guide](/guides/erp-tco/) for a way to compare them on equal terms.
+Microsoft publishes UK prices for Dynamics 365 Finance and licenses its core applications as named-user subscriptions. Sage X3 is quoted. In both cases, implementation, hosting, support and upgrades decide the five-year total. See the [ERP total cost of ownership guide](/guides/erp-tco/).

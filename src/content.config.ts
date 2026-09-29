@@ -3,12 +3,16 @@ import { glob } from 'astro/loaders';
 
 const fitState = z.enum(['strong', 'possible', 'gap', 'neutral']);
 
-const source = z.object({
-  title: z.string(),
-  publisher: z.string(),
-  url: z.url(),
-  accessed: z.coerce.date(),
-});
+// A source is either an external URL or a Mysoft page (built through utm.ts).
+const source = z
+  .object({
+    title: z.string(),
+    publisher: z.string(),
+    url: z.url().optional(),
+    mysoftKey: z.string().optional(),
+    accessed: z.coerce.date(),
+  })
+  .refine((s) => Boolean(s.url) !== Boolean(s.mysoftKey), 'A source needs exactly one of url or mysoftKey');
 
 const faq = z.object({ q: z.string(), a: z.string() });
 
@@ -20,14 +24,13 @@ const editorial = {
   faqs: z.array(faq).default([]),
   sources: z.array(source).min(1, 'Every page needs at least one source'),
   author: reference('authors'),
-  reviewer: z.string().optional(),
   published: z.coerce.date(),
   lastReviewed: z.coerce.date(),
   nextReview: z.coerce.date(),
   region: z.array(z.enum(['uk', 'us'])).default(['uk']),
   ctaLink: z.string(),
   phase: z.number().int().min(1).max(3).default(1),
-  // Pages stay unverified until Consulting signs off each factual claim.
+  // true once every factual statement has been checked against the listed sources.
   verified: z.boolean().default(false),
 };
 
@@ -54,7 +57,7 @@ const comparisons = defineCollection({
           competitorState: fitState.default('neutral'),
         }),
       )
-      .min(8)
+      .min(6)
       .max(12),
     questions: z.array(z.string()).length(5),
   }),

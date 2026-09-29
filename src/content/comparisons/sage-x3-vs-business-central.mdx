@@ -5,59 +5,49 @@ competitor: "Business Central"
 competitorVendor: "Microsoft"
 primaryQuery: "sage x3 vs business central"
 bestFor: "Distributors and manufacturers outgrowing SMB ERP"
-description: "Sage X3 vs Microsoft Dynamics 365 Business Central for distributors and manufacturers: operational depth, multi-site, deployment choice and cost drivers."
+description: "Sage X3 vs Microsoft Dynamics 365 Business Central for distributors and manufacturers: manufacturing, traceability, deployment and published pricing compared."
 related: sage-x3-vs-dynamics-365-finance-operations
 phase: 3
 verdict:
   chooseSage:
-    - "You run process or discrete manufacturing with recipes, routings or batch control."
-    - "You operate several sites, warehouses or countries and need lot, serial or expiry traceability."
-    - "You expect operational complexity to grow faster than headcount over the next five years."
+    - "You run process manufacturing with recipes, formulas or batches."
+    - "You need lot and serial traceability with batch genealogy and expiry dates."
+    - "You need on-premise or private cloud deployment."
   chooseCompetitor:
-    - "You are a smaller distributor or light manufacturer with straightforward processes."
-    - "Your business runs on Microsoft 365 and you want the ERP inside that estate."
-    - "You want published per-user pricing and the widest choice of partners."
+    - "You are a small or midsize business with assembly or bill-of-materials manufacturing."
+    - "Your teams live in Outlook, Excel and Teams."
+    - "You want published per-user pricing to budget from."
 table:
+  - feature: "Target market"
+    sage: "Manufacturers and distributors, including medium-sized"
+    competitor: "Small and midsize businesses; used by 55,000 companies"
   - feature: "Deployment"
-    sage: "Cloud, private hosting or on-premise"
+    sage: "SaaS, private cloud or on-premise"
     sageState: strong
-    competitor: "Cloud (SaaS); on-premise option available"
-    competitorState: strong
-  - feature: "Typical customer size"
-    sage: "Mid-market to upper mid-market"
-    competitor: "Small to lower mid-market"
-  - feature: "Core strengths"
-    sage: "Manufacturing, distribution and finance depth for the mid-market"
-    competitor: "Microsoft 365 integration; broad SMB operational scope"
-  - feature: "Multi-entity and consolidation"
-    sage: "Multi-company, multi-site and multi-legislation"
-    sageState: strong
-    competitor: "Multiple companies with consolidation features"
-    competitorState: possible
+    competitor: "Cloud"
   - feature: "Manufacturing"
-    sage: "Process and discrete manufacturing with MRP"
+    sage: "Process and discrete manufacturing"
     sageState: strong
-    competitor: "Light and assembly manufacturing in core; deeper needs through extensions"
-    competitorState: possible
-  - feature: "Warehousing and traceability"
-    sage: "Multi-warehouse with lot, serial and expiry tracking"
-    sageState: strong
-    competitor: "Warehousing and item tracking in core; complex operations often need extensions"
-    competitorState: possible
-  - feature: "UK localisation and MTD"
-    sage: "UK legislation with Making Tax Digital for VAT"
-    sageState: strong
-    competitor: "UK localisation with Making Tax Digital for VAT"
+    competitor: "Bills of materials, assembly to order and production orders"
     competitorState: strong
-  - feature: "UK partner and support"
-    sage: "Specialist UK Sage X3 partners"
-    competitor: "Large Microsoft partner network"
+  - feature: "Warehousing and traceability"
+    sage: "Advanced WMS; lot and serial tracking with batch genealogy"
+    sageState: strong
+    competitor: "Pick and put-away with barcode scanners"
+    competitorState: possible
+  - feature: "Microsoft 365"
+    sage: "Through integrations"
+    sageState: possible
+    competitor: "Works with Outlook, Excel and Teams"
+    competitorState: strong
+  - feature: "Making Tax Digital for VAT"
+    sage: "Supported"
+    sageState: strong
+    competitor: "Submits VAT returns to HMRC"
+    competitorState: strong
   - feature: "Pricing model"
-    sage: "Subscription or licence, by users and modules"
-    competitor: "Published per-user monthly pricing by edition"
-  - feature: "Ecosystem"
-    sage: "Sage Marketplace and specialist add-ons, including X3CloudDocs"
-    competitor: "Microsoft AppSource and the Power Platform"
+    sage: "Quoted"
+    competitor: "Published: Essentials £61.50 and Premium £84.60 per user per month, billed yearly"
 questions:
   - "Which of our manufacturing and warehouse processes are standard, and which need an extension?"
   - "Who supports each extension in your proposal, and what happens when the core product upgrades?"
@@ -65,26 +55,48 @@ questions:
   - "What would the system look like if we doubled sites or product lines?"
   - "What is the five-year cost, including extensions, support and upgrades?"
 faqs:
-  - q: "Is Business Central good enough for manufacturing?"
-    a: "For light and assembly manufacturing, often yes. Process manufacturers, and businesses with complex routings, batch control or multi-site production, usually need extensions on Business Central or a deeper product such as Sage X3."
-  - q: "When should a Business Central user move to Sage X3?"
-    a: "Common triggers are adding production sites or countries, relying on several extensions to cover core operations, and needing traceability that the current setup handles with workarounds."
+  - q: "Does Business Central include manufacturing?"
+    a: "Yes. Microsoft lists detailed bills of materials, assembly to order and production orders. Sage X3 supports process as well as discrete manufacturing, so test recipes, formulas or batch processes with each supplier."
   - q: "Is Sage X3 more expensive than Business Central?"
-    a: "Business Central's licence is usually cheaper for small teams. For complex operations the gap narrows once extensions, their support and integration maintenance are included. Compare a five-year cost for the same scope."
-  - q: "Can Sage X3 integrate with Microsoft 365?"
-    a: "Yes, through standard integrations such as Excel reporting and email, and through its APIs. The integration is not as native as Business Central's, so check the workflows your team relies on."
+    a: "Business Central publishes its prices; at the time of review, Essentials was £61.50 and Premium £84.60 per user per month, billed yearly. Sage X3 is quoted. Compare a five-year cost for the same scope, including any extensions and their support."
+  - q: "Can Sage X3 run on-premise?"
+    a: "Yes. Sage X3 can run as SaaS, in a private cloud or on-premise."
 sources:
-  - title: "Sage X3"
+  - title: "Sage X3 ERP for manufacturing and distribution"
     publisher: "Sage"
-    url: "https://www.sage.com/en-gb/products/sage-x3/"
+    url: "https://www.sage.com/en-us/sage-business-cloud/sage-x3/"
+    accessed: 2026-09-29
+  - title: "Sage X3 for process manufacturing"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-gb/sage-business-cloud/sage-x3/industry/process-manufacturing/"
+    accessed: 2026-09-29
+  - title: "Sage X3 for discrete manufacturing"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-gb/sage-business-cloud/sage-x3/industry/manufacturing/"
+    accessed: 2026-09-29
+  - title: "Sage X3 Warehousing"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-ae/sage-business-cloud/sage-x3/complementary-solutions/sage-x3-warehousing/"
+    accessed: 2026-09-29
+  - title: "The secret ingredient to effective traceability and efficiency: Sage X3"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-us/blog/traceability-efficiency-sage-x3/"
+    accessed: 2026-09-29
+  - title: "Is Sage X3 compliant with Making Tax Digital?"
+    publisher: "Sage Knowledgebase"
+    url: "https://gb-kb.sage.com/portal/app/portlets/results/view2.jsp?k2dockey=200427112505068"
+    accessed: 2026-09-29
+  - title: "Mysoft's implementation methods for Sage X3"
+    publisher: "Mysoft"
+    mysoftKey: "mysoft-methods"
     accessed: 2026-09-29
   - title: "Dynamics 365 Business Central"
     publisher: "Microsoft"
     url: "https://www.microsoft.com/en-gb/dynamics-365/products/business-central"
     accessed: 2026-09-29
-  - title: "Business Central pricing"
-    publisher: "Microsoft"
-    url: "https://www.microsoft.com/en-gb/dynamics-365/products/business-central/pricing"
+  - title: "Making Tax Digital: submitting VAT returns in Business Central"
+    publisher: "Microsoft Learn"
+    url: "https://learn.microsoft.com/en-us/dynamics365/business-central/localfunctionality/unitedkingdom/making-tax-digital-submit-vat-return"
     accessed: 2026-09-29
 author: jamie-watts
 published: 2026-09-29
@@ -92,29 +104,22 @@ lastReviewed: 2026-09-29
 nextReview: 2026-12-29
 region: [uk]
 ctaLink: mysoft-x3
+verified: true
 ---
 import MysoftLink from '../../components/MysoftLink.astro';
 
 ## Where Business Central is stronger
 
-Business Central is a strong fit for smaller distributors and light manufacturers. Purchasing, stock, sales and basic production sit in the core product, and its native links to Outlook, Excel and Teams make it familiar from day one.
+Microsoft positions Business Central for small and midsize businesses and says it is used by 55,000 companies. It works with Outlook, Excel and Teams, and covers operations in the core product: manufacturing with detailed bills of materials, assembly to order and production orders; warehousing with pick and put-away supported by barcode scanners; and AI-powered sales and inventory forecasting.
 
-Microsoft publishes per-user pricing by edition and has a very large partner network, so budgeting and partner choice are straightforward. For a business with simple operations and a Microsoft-first IT estate, it is often the sensible choice.
-
-Business Central is a sensible choice when:
-
-- Your manufacturing is light or assembly-based.
-- You run one or two sites with straightforward stock.
-- Microsoft 365 alignment is a priority for IT.
+Its prices are published, which makes early budgeting straightforward.
 
 ## Where Sage X3 is stronger
 
-Sage X3 is built for operational complexity. Process and discrete manufacturing, MRP, multi-site warehousing and end-to-end lot, serial and expiry traceability are in the core product, rather than supplied by extensions from several publishers.
+Sage X3 supports process as well as discrete manufacturing. Sage lists advanced warehouse management, manufacturing planning and end-to-end batch genealogy, and lot and serial numbers can be tracked to their final destination with expiry dates calculated as required. Sage describes Sage X3 Warehousing as a configurable, rules-based warehouse management system for medium-sized manufacturers and distributors.
 
-That matters over time. Each extension adds its own licence, support contract and upgrade dependency. Businesses that have grown through Business Central often find that the extensions, not the core product, drive cost and risk. Sage X3 keeps those processes in one system with one upgrade path.
-
-Deployment choice is broader too: cloud, private hosting or on-premise. See <MysoftLink to="mysoft-industry-distribution" position="body">Sage X3 for distributors at Mysoft</MysoftLink> for examples of the processes it covers.
+Deployment is broader too: SaaS, private cloud or on-premise. See <MysoftLink to="mysoft-industry-distribution" position="body">Sage X3 for distributors at Mysoft</MysoftLink> for examples.
 
 ## Cost and implementation
 
-Business Central's published per-user pricing makes the licence easy to estimate. For a complex operation, add the extensions, their support and the integration work before comparing. For Sage X3, Mysoft's <MysoftLink to="mysoft-rapid-deploy" position="body">fixed-scope Kickstart approach</MysoftLink> is the lowest-cost route to go-live. The [ERP total cost of ownership guide](/guides/erp-tco/) shows how to compare them over five years.
+Business Central's per-user prices are published; Sage X3 is quoted. Mysoft publishes its <MysoftLink to="mysoft-methods" position="body">Sage X3 delivery options</MysoftLink>, from 80 service days over six months (excluding manufacturing) to 140 service days over twelve months. Compare five-year costs using the [ERP total cost of ownership guide](/guides/erp-tco/).

@@ -17,7 +17,7 @@ Build-time checks (`scripts/check-content.mjs`, `scripts/check-dist.mjs`) fail t
 
 | Path | Purpose |
 |---|---|
-| `src/data/selector.rules.json` | Questions, weights, hard rules, gaps, outcome copy. Consulting edits this by pull request |
+| `src/data/selector.rules.json` | Questions, weights, hard rules, gaps, outcome copy and the sources behind every capability statement |
 | `src/lib/scoring.ts` | Pure engine `score(answers, rules)`, also used server-side |
 | `src/data/links.json` + `src/lib/utm.ts` | Mysoft link map; every Mysoft link goes through `mysoftUrl()` or `<MysoftLink>` |
 | `src/content/comparisons`, `guides`, `marketplace` | Editorial content with typed frontmatter (`src/content.config.ts`) |
@@ -36,25 +36,24 @@ Secrets: `TURNSTILE_SECRET`, `ZOHO_CLIENT_ID`, `ZOHO_CLIENT_SECRET`, `ZOHO_REFRE
 
 Zone settings outside the repo: www to apex Redirect Rule; allow the AI crawlers listed in `public/robots.txt` in bot management; IndexNow.
 
+## Content standard
+
+Every factual statement on the site must be checkable against a source listed on the same page. Pages carry `verified: true` only when that is the case, and the build fails on any comparison or guide without it.
+
+- Vendor capabilities are stated only where the vendor's own pages, documentation or a named third-party source say so. Where no source covers a capability, the table says "Check in a demo" rather than guessing.
+- Mysoft facts (delivery options, cost views, industry positioning) cite Mysoft's own pages, labelled as Mysoft.
+- Advice, checklists, supplier questions and the selector's weights are presented as the guide's view, not as fact.
+- Sources were checked on 29 September 2026 by web search and direct fetch. sage.com, netsuite.com and mysoftx3.com could not be fetched directly from the build environment, so those facts were confirmed from search results quoting those pages.
+
+When you edit content, keep to the same rule: add the source first, then the claim.
+
 ## Open items before launch
 
-**[CONFIRM] Mysoft decisions**
-
-- Link map (D6): all URLs came from mysoftx3.com search listings on 29 Sep 2026. `mysoft-rapid-deploy` points to the Kickstart page and `mysoft-tco` to the Toolkit calculator until dedicated pages exist.
-- Company details in `src/data/site.json`: number 05208408 (Companies House listing for MYSOFT LIMITED) and the Fleet trading address. The registered office on Companies House is a London address, so check which one the footer should show.
-- Jamie's personal LinkedIn URL (the author file currently uses the Mysoft company page) and years of experience for the author box.
-- Portrait: add `public/images/jamie-watts.jpg` (square, at least 176px). Until then a "JW" block is shown.
+- Jamie's portrait: add `public/images/jamie-watts.jpg` (square, at least 176px). Until then a "JW" block is shown.
 - Webfonts (D4): see `docs/fonts.md`. The site uses the system stack until the files are added.
 - Corrections inbox `guide@sagereseller.com`, the sales notification address, and the Zoho `Lead_Source` picklist value and Sub-Source field name.
-- ISV partners (D7): only Sage's marketplaces and X3CloudDocs are listed. Add partners as JSON files in `src/content/marketplace/` with `relationship` and `sponsored` set.
-- Indicative timeline and cost ranges for the report email. The email currently offers a call instead.
-- Privacy notice retention period (three years is a placeholder) and legal review (D3, D8).
-
-**[VERIFY] Consulting review**
-
-- Every comparison and guide has `verified: false`. The content check lists these as warnings; set `verified: true` after review.
-- Selector weights, hard rules and fit profile (rules marked `"verify": true`), with Amey Richardson.
-- Competitor statements, particularly for Rillet and Campfire, which are new and change quickly.
+- `mysoft-tco` points to the Toolkit calculator until a dedicated TCO page exists.
+- Add-on partners: only Sage's marketplaces and X3CloudDocs are listed. Add others as JSON files in `src/content/marketplace/` with `relationship` and `sponsored` set.
 
 ## Not built yet
 

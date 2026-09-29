@@ -4,7 +4,7 @@
   "worksWith": "x3",
   "function": "marketplace",
   "bestFor": "Finding UK apps and add-ons for Sage X3 and other Sage products",
-  "description": "Sage's UK listing of apps and add-ons across its product range, including extensions for Sage X3. Filter by product to see what works with your system.",
+  "description": "Sage's UK listing of apps and add-ons across its product range, including extensions for Sage X3 such as Warehouse Manager for Sage X3.",
   "relationship": "sage",
   "url": "https://uk-marketplace.sage.com/",
   "order": 2,

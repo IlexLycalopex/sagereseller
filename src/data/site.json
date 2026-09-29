@@ -2,14 +2,14 @@
   "name": "The Sage Buyer's Guide",
   "url": "https://sagereseller.com",
   "strapline": "Published by Jamie Watts and Mysoft, a UK Sage Partner.",
-  "footerDisclosure": "sagereseller.com is published by Jamie Watts, Managing Director of Mysoft Ltd, a Sage Business Partner and ISV. Links to Mysoft are to our own services. Comparisons are based on published vendor information and our implementation experience, and are reviewed quarterly.",
+  "footerDisclosure": "sagereseller.com is published by Jamie Watts, Managing Director of Mysoft Ltd, a Sage Business Partner and ISV. Links to Mysoft are to our own services. Comparisons are based on published vendor information, cite their sources, and are reviewed quarterly.",
   "correctionsEmail": "guide@sagereseller.com",
   "company": {
     "name": "Mysoft Ltd",
     "number": "05208408",
-    "numberConfirmed": false,
-    "address": "Redfields Lane, Fleet, Hampshire, GU52 0RJ, United Kingdom",
-    "addressConfirmed": false,
+    "numberConfirmed": true,
+    "address": "Registered office: 5 Technology Park, Colindeep Lane, Colindale, London, NW9 6BX",
+    "addressConfirmed": true,
     "companiesHouse": "https://find-and-update.company-information.service.gov.uk/company/05208408",
     "linkedin": "https://www.linkedin.com/company/mysoft-ltd"
   },

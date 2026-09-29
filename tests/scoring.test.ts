@@ -71,7 +71,7 @@ describe('selector fixtures (spec D2)', () => {
   it('F-06 applies hard rule H1 with its reason first', () => {
     const r = score(fixtures[5].answers, rules);
     expect(r.appliedRules).toContain('H1');
-    expect(r.reasons[0]).toMatch(/only as cloud software/);
+    expect(r.reasons[0]).toMatch(/cloud-only software with no on-premise option/);
   });
 
   it('F-01 applies H2, not H1', () => {

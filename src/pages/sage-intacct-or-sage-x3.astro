@@ -35,10 +35,10 @@ const t = rules.outcomes.thresholds;
 const sevText = { gap: 'Gap', possible: 'Possible with work', constraint: 'Constraint', note: 'Fit note' } as const;
 
 const faqs = [
-  { q: 'Is Sage Intacct or Sage X3 better?', a: 'Neither is better in general. Sage Intacct is finance-first cloud software for businesses whose complexity is in reporting, entities and revenue. Sage X3 is an ERP that adds supply chain, warehousing and production. The better choice is the one that matches where your complexity sits.' },
-  { q: 'Can Sage Intacct handle inventory?', a: 'Sage Intacct includes inventory features suited to simple finished goods. Multi-warehouse operations, lot and serial traceability and manufacturing usually need a marketplace add-on or Sage X3.' },
-  { q: 'Can Sage X3 run on-premise?', a: 'Yes. Sage X3 can run in the cloud, in private hosting or on-premise. Sage Intacct is available only as cloud software.' },
-  { q: 'Which is quicker to implement?', a: 'Sage Intacct projects are usually shorter because the scope is finance. Sage X3 projects cover operations as well, so they take longer; a fixed-scope, pre-configured start is the fastest route.' },
+  { q: 'Is Sage Intacct or Sage X3 better?', a: 'They are built for different jobs. Sage Intacct is cloud financial management software with automated multi-entity consolidation, subscription billing, revenue recognition and project accounting. Sage X3 manages finance, supply chain and production in one system, with process and discrete manufacturing. The better choice is the one that matches where your complexity sits.' },
+  { q: 'Can Sage Intacct handle inventory and manufacturing?', a: 'Sage Intacct includes inventory management across multiple locations. For manufacturing, Sage offers Sage Distribution and Manufacturing Operations for Sage Intacct, which it describes as for discrete manufacturers and distributors, and the Sage Intacct Marketplace lists manufacturing and warehouse partners. Sage X3 supports both process and discrete manufacturing.' },
+  { q: 'Can Sage X3 run on-premise?', a: 'Yes. Sage X3 can run as SaaS, in a private cloud or on-premise. Sage Intacct is cloud-only software with no on-premise option.' },
+  { q: 'Which is quicker to implement?', a: "Mysoft's published view is that an average Sage Intacct project costs less than an average Sage X3 project because it is faster to deliver. Mysoft publishes its Sage X3 delivery options as 80 service days over six calendar months, excluding manufacturing, up to 140 service days over twelve months." },
   { q: 'What if both products could work for us?', a: 'Decide on where your business will be in three years. If stock, warehousing or production will matter more, lean towards Sage X3. If entities, subscriptions, projects or funds matter more, lean towards Sage Intacct.' },
 ];
 
@@ -52,10 +52,7 @@ const toc = [
   { id: 'faq', label: 'Frequently asked questions' },
   { id: 'sources', label: 'Sources' },
 ];
-const sources = [
-  { title: 'Sage Intacct', publisher: 'Sage', url: 'https://www.sage.com/en-gb/sage-business-cloud/intacct/', accessed: new Date('2026-09-29') },
-  { title: 'Sage X3', publisher: 'Sage', url: 'https://www.sage.com/en-gb/products/sage-x3/', accessed: new Date('2026-09-29') },
-];
+const sources = (rules as unknown as { sources: { title: string; publisher: string; url?: string; mysoftKey?: string; accessed: string }[] }).sources.map((x) => ({ ...x, accessed: new Date(x.accessed) }));
 ---
 <Article
   title="Sage Intacct or Sage X3: how to decide"
@@ -69,7 +66,7 @@ const sources = [
 >
   <div slot="answer" class="short-answer">
     <span class="eyebrow">Short answer</span>
-    <p>Choose Sage Intacct when your complexity is financial: entities, dimensions, subscriptions, projects or funds. Choose Sage X3 when you also run stock, warehouses or production, or need to run on-premise. If you manufacture, Sage X3 is the Sage answer. This page sets out the exact rules our selector uses.</p>
+    <p>Sage Intacct is cloud financial management with automated multi-entity consolidation, subscription billing and project accounting. Sage X3 runs finance, supply chain and production in one system, supports process and discrete manufacturing, and can run on-premise. This page sets out the exact rules our selector uses, with sources.</p>
     <div class="btn-row"><a class="btn btn-primary" href="/which-sage/">Start the selector</a></div>
   </div>
 
@@ -90,7 +87,7 @@ const sources = [
 
   <section id="signals">
     <h2>Which answers point where</h2>
-    <div class="prose"><p>Each answer adds points to Sage Intacct, Sage X3, or neither. These are the weights our selector uses, validated by Mysoft Consulting. Questions that carry no weight, such as {unscored.map((q) => q.text.toLowerCase().replace('?', '')).join('; ')}, shape the gaps and constraints instead.</p></div>
+    <div class="prose"><p>Each answer adds points to Sage Intacct, Sage X3, or neither. These weights are Mysoft's judgement about fit, not vendor facts; the capability statements behind them are sourced below. Questions that carry no weight, such as {unscored.map((q) => q.text.toLowerCase().replace('?', '')).join('; ')}, shape the gaps and constraints instead.</p></div>
     {scored.map((q) => (
       <div class="mt-20">
         <h3>{q.text}</h3>
@@ -114,8 +111,8 @@ const sources = [
       <p>Some answers settle the question before any points are counted.</p>
       <ul>
         {rules.hardRules.map((h) => <li><strong>Sage X3</strong> when {describe(h.when)}. {h.reason}</li>)}
-        <li><strong>Sage may not be the right lead system</strong> when store-based retail with point of sale, or core banking or insurance policy administration, is central to how you operate. A specialist system usually leads, with Sage possibly handling finance alongside it.</li>
-        <li><strong>Your current system may be enough</strong> when revenue is under £5m, you report on one entity, stock is none or simple, and you invoice one-off sales only.</li>
+        <li><strong>No Sage recommendation</strong> when store-based retail with point of sale, or core banking or insurance policy administration, is central to how you operate. These are outside what the selector assesses.</li>
+        <li><strong>Your current system may be enough for now</strong> when revenue is under £5m, you report on one entity, stock is none or simple, and you invoice one-off sales only.</li>
       </ul>
     </div>
   </section>

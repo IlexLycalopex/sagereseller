@@ -13,12 +13,11 @@ interface Props {
   lede?: string;
   published: Date;
   lastReviewed: Date;
-  reviewer?: string;
   crumbs: { name: string; path?: string }[];
   toc: { id: string; label: string }[];
   faqs?: { q: string; a: string }[];
 }
-const { title, description, eyebrow, lede, published, lastReviewed, reviewer, crumbs, toc, faqs = [] } = Astro.props;
+const { title, description, eyebrow, lede, published, lastReviewed, crumbs, toc, faqs = [] } = Astro.props;
 const path = Astro.url.pathname;
 const schema = [
   articleNode({ headline: title, description, path, published, modified: lastReviewed }),
@@ -37,7 +36,7 @@ const schema = [
       <h1>{title}</h1>
       {lede && <p class="lede">{lede}</p>}
       <slot name="answer" />
-      <p class="author-line">By <a href="/about/">Jamie Watts</a>, Managing Director, Mysoft{reviewer ? `. Reviewed by ${reviewer}, Mysoft Consulting` : ''}. <a href="#sources">Sources listed below</a>.</p>
+      <p class="author-line">By <a href="/about/">Jamie Watts</a>, Managing Director, Mysoft. <a href="#sources">Sources listed below</a>.</p>
     </header>
     <div class="article-layout">
       <div class="article-body">

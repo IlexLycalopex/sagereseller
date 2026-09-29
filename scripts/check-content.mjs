@@ -1,7 +1,8 @@
 // Pre-build content checks (spec C3). Fails the build on:
 //  - em dash (U+2014) or exclamation mark in content and data files
 //  - lastReviewed older than 120 days on any comparison or guide
-// Warns on nextReview in the past and on pages not yet verified by Consulting.
+//  - a comparison or guide without verified: true (every factual statement checked against its sources)
+// Warns on nextReview in the past.
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -43,7 +44,7 @@ for (const dir of dirs) {
       if (age > MAX_AGE_DAYS) errors.push(`${rel} was last reviewed ${Math.floor(age)} days ago (limit ${MAX_AGE_DAYS})`);
     }
     if (next && new Date(next) < today) warnings.push(`${rel} nextReview ${next} is in the past`);
-    if (!/^verified:\s*true/m.test(fm[1])) warnings.push(`${rel} is not yet verified by Consulting`);
+    if (!/^verified:\s*true/m.test(fm[1])) errors.push(`${rel} is not marked verified: true; check every factual statement against its sources first`);
   }
 }
 

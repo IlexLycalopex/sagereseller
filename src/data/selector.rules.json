@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "status": "First draft for validation by Mysoft Consulting (Amey Richardson). Capability statements marked verify:true must be checked before launch.",
+  "status": "Scoring weights are Mysoft's judgement. Every capability statement in reasons, gaps and the fit profile is checked against the sources in 'sources'.",
   "questions": [
     {
       "id": "model",
@@ -8,13 +8,80 @@
       "helper": "Pick the one that drives most of your revenue.",
       "type": "single",
       "options": [
-        { "id": "make", "label": "Make products", "weights": { "x3": 3, "intacct": -2 }, "reason": { "x3": "You make products, and Sage X3 is built around production as well as finance." } },
-        { "id": "distribute", "label": "Distribute or wholesale", "weights": { "x3": 3, "intacct": -1 }, "reason": { "x3": "You distribute or wholesale, where Sage X3 runs purchasing, stock and sales order processing in one system." } },
-        { "id": "services", "label": "Professional services", "weights": { "x3": -2, "intacct": 3 }, "reason": { "intacct": "You run a professional services business, a core market for Sage Intacct." } },
-        { "id": "software", "label": "Software or subscription", "weights": { "x3": -2, "intacct": 3 }, "reason": { "intacct": "You sell software or subscriptions, which Sage Intacct is widely used for." } },
-        { "id": "nonprofit", "label": "Non-profit", "weights": { "x3": -2, "intacct": 3 }, "reason": { "intacct": "You are a non-profit, and Sage Intacct's dimensions suit fund and grant reporting." } },
-        { "id": "finserv", "label": "Financial services", "weights": { "x3": -1, "intacct": 3 }, "reason": { "intacct": "You are in financial services, where a finance-first system with strong multi-entity reporting usually fits best." } },
-        { "id": "other", "label": "Other", "weights": { "x3": 0, "intacct": 0 } }
+        {
+          "id": "make",
+          "label": "Make products",
+          "weights": {
+            "x3": 3,
+            "intacct": -2
+          },
+          "reason": {
+            "x3": "You make products, and Sage X3 is built for manufacturers, covering production, inventory, sales and finance in one system."
+          }
+        },
+        {
+          "id": "distribute",
+          "label": "Distribute or wholesale",
+          "weights": {
+            "x3": 3,
+            "intacct": -1
+          },
+          "reason": {
+            "x3": "You distribute or wholesale, and Sage X3 includes advanced warehouse management alongside finance."
+          }
+        },
+        {
+          "id": "services",
+          "label": "Professional services",
+          "weights": {
+            "x3": -2,
+            "intacct": 3
+          },
+          "reason": {
+            "intacct": "You run a professional services business, and Sage Intacct includes project accounting."
+          }
+        },
+        {
+          "id": "software",
+          "label": "Software or subscription",
+          "weights": {
+            "x3": -2,
+            "intacct": 3
+          },
+          "reason": {
+            "intacct": "You sell software or subscriptions, and Sage Intacct includes subscription billing and revenue recognition."
+          }
+        },
+        {
+          "id": "nonprofit",
+          "label": "Non-profit",
+          "weights": {
+            "x3": -2,
+            "intacct": 3
+          },
+          "reason": {
+            "intacct": "You are a non-profit, and Sage Intacct can report on funds, grants and donations."
+          }
+        },
+        {
+          "id": "finserv",
+          "label": "Financial services",
+          "weights": {
+            "x3": -1,
+            "intacct": 3
+          },
+          "reason": {
+            "intacct": "You are in financial services, where the main need is finance and reporting rather than stock or production."
+          }
+        },
+        {
+          "id": "other",
+          "label": "Other",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        }
       ]
     },
     {
@@ -23,10 +90,50 @@
       "helper": "Think about physical goods you buy, hold or make.",
       "type": "single",
       "options": [
-        { "id": "none", "label": "None", "weights": { "x3": -2, "intacct": 2 }, "reason": { "intacct": "You hold no stock, so you do not need to pay for supply chain depth you will not use." } },
-        { "id": "simple", "label": "Simple finished goods", "weights": { "x3": 0, "intacct": 1 }, "reason": { "intacct": "Your stock is simple enough for Sage Intacct's inventory features." } },
-        { "id": "warehouses", "label": "Several warehouses, lot or serial tracking", "weights": { "x3": 3, "intacct": -1 }, "reason": { "x3": "You run several warehouses or need lot and serial traceability, which Sage X3 handles natively." } },
-        { "id": "manufacture", "label": "We manufacture: bills of materials, routings or recipes", "weights": { "x3": 4, "intacct": -3 }, "reason": { "x3": "You manufacture with bills of materials, routings or recipes, which Sage X3 supports natively." } }
+        {
+          "id": "none",
+          "label": "None",
+          "weights": {
+            "x3": -2,
+            "intacct": 2
+          },
+          "reason": {
+            "intacct": "You hold no stock, so you do not need supply chain or production features."
+          }
+        },
+        {
+          "id": "simple",
+          "label": "Simple finished goods",
+          "weights": {
+            "x3": 0,
+            "intacct": 1
+          },
+          "reason": {
+            "intacct": "Your stock is simple, and Sage Intacct includes inventory management across multiple locations."
+          }
+        },
+        {
+          "id": "warehouses",
+          "label": "Several warehouses, lot or serial tracking",
+          "weights": {
+            "x3": 3,
+            "intacct": -1
+          },
+          "reason": {
+            "x3": "You run several warehouses or need lot and serial tracking, both of which Sage X3 provides."
+          }
+        },
+        {
+          "id": "manufacture",
+          "label": "We manufacture: bills of materials, routings or recipes",
+          "weights": {
+            "x3": 4,
+            "intacct": -3
+          },
+          "reason": {
+            "x3": "You manufacture, and Sage X3 supports both process and discrete manufacturing."
+          }
+        }
       ]
     },
     {
@@ -35,10 +142,49 @@
       "helper": "Include subsidiaries, overseas companies and any entities you consolidate.",
       "type": "single",
       "options": [
-        { "id": "one", "label": "One", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "2-5", "label": "Two to five", "weights": { "x3": 0, "intacct": 1 }, "reason": { "intacct": "You report on several entities, and Sage Intacct consolidates them without spreadsheets." } },
-        { "id": "6-20", "label": "Six to twenty", "weights": { "x3": 1, "intacct": 2 }, "reason": { "intacct": "You consolidate many entities, one of Sage Intacct's strongest areas.", "x3": "You run many entities, which Sage X3 handles across sites and legislations." } },
-        { "id": "20plus", "label": "More than twenty", "weights": { "x3": 1, "intacct": 2 }, "reason": { "intacct": "You consolidate many entities, one of Sage Intacct's strongest areas.", "x3": "You run many entities, which Sage X3 handles across sites and legislations." } }
+        {
+          "id": "one",
+          "label": "One",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "2-5",
+          "label": "Two to five",
+          "weights": {
+            "x3": 0,
+            "intacct": 1
+          },
+          "reason": {
+            "intacct": "You report on several entities, and Sage Intacct automates multi-entity consolidation."
+          }
+        },
+        {
+          "id": "6-20",
+          "label": "Six to twenty",
+          "weights": {
+            "x3": 1,
+            "intacct": 2
+          },
+          "reason": {
+            "intacct": "You consolidate many entities, and Sage Intacct consolidates entities across currencies automatically.",
+            "x3": "You run many entities, and Sage X3 provides multi-site, multi-currency and multi-country management."
+          }
+        },
+        {
+          "id": "20plus",
+          "label": "More than twenty",
+          "weights": {
+            "x3": 1,
+            "intacct": 2
+          },
+          "reason": {
+            "intacct": "You consolidate many entities, and Sage Intacct consolidates entities across currencies automatically.",
+            "x3": "You run many entities, and Sage X3 provides multi-site, multi-currency and multi-country management."
+          }
+        }
       ]
     },
     {
@@ -47,9 +193,36 @@
       "helper": "Count countries where you have a legal entity or file tax returns.",
       "type": "single",
       "options": [
-        { "id": "uk", "label": "UK only", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "few", "label": "UK and a few other countries", "weights": { "x3": 0, "intacct": 1 }, "reason": { "intacct": "You operate in a handful of countries, which Sage Intacct's multi-currency and multi-entity features cover well." } },
-        { "id": "six", "label": "Six or more countries", "weights": { "x3": 1, "intacct": 0 }, "reason": { "x3": "You operate in six or more countries, and Sage X3 carries localisations for many legislations." } }
+        {
+          "id": "uk",
+          "label": "UK only",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "few",
+          "label": "UK and a few other countries",
+          "weights": {
+            "x3": 0,
+            "intacct": 1
+          },
+          "reason": {
+            "intacct": "You operate in a few countries, and Sage Intacct consolidates across currencies."
+          }
+        },
+        {
+          "id": "six",
+          "label": "Six or more countries",
+          "weights": {
+            "x3": 1,
+            "intacct": 0
+          },
+          "reason": {
+            "x3": "You operate in six or more countries, and Sage X3 has built-in support for multiple countries, currencies and legislations."
+          }
+        }
       ]
     },
     {
@@ -58,11 +231,58 @@
       "helper": "Select all that apply.",
       "type": "multi",
       "options": [
-        { "id": "oneoff", "label": "One-off invoicing", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "subs", "label": "Subscriptions or recurring contracts", "weights": { "x3": -1, "intacct": 2 }, "reason": { "intacct": "You bill subscriptions or recurring contracts, a strength of Sage Intacct." } },
-        { "id": "projects", "label": "Projects or time-based billing", "weights": { "x3": -1, "intacct": 2 }, "reason": { "intacct": "You bill projects or time, which Sage Intacct's project accounting supports." } },
-        { "id": "grants", "label": "Grants or restricted funds", "weights": { "x3": -2, "intacct": 2 }, "reason": { "intacct": "You manage grants or restricted funds, which Sage Intacct tracks through dimensions." } },
-        { "id": "volume", "label": "High-volume orders or ecommerce", "weights": { "x3": 2, "intacct": -1 }, "reason": { "x3": "You process high order volumes, which Sage X3 handles in its core order management." } }
+        {
+          "id": "oneoff",
+          "label": "One-off invoicing",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "subs",
+          "label": "Subscriptions or recurring contracts",
+          "weights": {
+            "x3": -1,
+            "intacct": 2
+          },
+          "reason": {
+            "intacct": "You bill subscriptions or recurring contracts, and Sage Intacct includes subscription billing and revenue recognition."
+          }
+        },
+        {
+          "id": "projects",
+          "label": "Projects or time-based billing",
+          "weights": {
+            "x3": -1,
+            "intacct": 2
+          },
+          "reason": {
+            "intacct": "You bill projects or time, and Sage Intacct includes project accounting."
+          }
+        },
+        {
+          "id": "grants",
+          "label": "Grants or restricted funds",
+          "weights": {
+            "x3": -2,
+            "intacct": 2
+          },
+          "reason": {
+            "intacct": "You manage grants or restricted funds, and Sage Intacct can report on funds and grants."
+          }
+        },
+        {
+          "id": "volume",
+          "label": "High-volume orders or ecommerce",
+          "weights": {
+            "x3": 2,
+            "intacct": -1
+          },
+          "reason": {
+            "x3": "You process high order volumes, and Sage X3 covers sales, inventory and warehousing in one system."
+          }
+        }
       ]
     },
     {
@@ -71,9 +291,33 @@
       "helper": "On-premise includes private hosting you control.",
       "type": "single",
       "options": [
-        { "id": "cloud", "label": "Cloud software only", "weights": { "x3": 0, "intacct": 1 }, "reason": { "intacct": "You want cloud software only, and Sage Intacct is delivered only as a cloud service." } },
-        { "id": "cloud-pref", "label": "Cloud preferred, open to options", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "onprem", "label": "We need on-premise or private hosting", "weights": { "x3": 0, "intacct": 0 } }
+        {
+          "id": "cloud",
+          "label": "Cloud software only",
+          "weights": {
+            "x3": 0,
+            "intacct": 1
+          },
+          "reason": {
+            "intacct": "You want cloud software, and Sage Intacct is multi-tenant cloud software updated by Sage."
+          }
+        },
+        {
+          "id": "cloud-pref",
+          "label": "Cloud preferred, open to options",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "onprem",
+          "label": "We need on-premise or private hosting",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        }
       ]
     },
     {
@@ -82,11 +326,49 @@
       "helper": "Your main finance system.",
       "type": "single",
       "options": [
-        { "id": "xero-qb", "label": "Xero or QuickBooks", "weights": { "x3": 0, "intacct": 1 }, "reason": { "intacct": "You are moving up from Xero or QuickBooks, a common and well-trodden path to Sage Intacct." } },
-        { "id": "sage50-200", "label": "Sage 50 or Sage 200", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "older-erp", "label": "An older ERP", "weights": { "x3": 1, "intacct": 0 }, "reason": { "x3": "You are replacing an older ERP, and Sage X3 covers the same operational scope." } },
-        { "id": "cloud-erp", "label": "NetSuite or another cloud ERP", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "spreadsheets", "label": "Mainly spreadsheets", "weights": { "x3": 0, "intacct": 0 } }
+        {
+          "id": "xero-qb",
+          "label": "Xero or QuickBooks",
+          "weights": {
+            "x3": 0,
+            "intacct": 1
+          }
+        },
+        {
+          "id": "sage50-200",
+          "label": "Sage 50 or Sage 200",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "older-erp",
+          "label": "An older ERP",
+          "weights": {
+            "x3": 1,
+            "intacct": 0
+          },
+          "reason": {
+            "x3": "You are replacing an older ERP, and Sage X3 covers finance, supply chain and production."
+          }
+        },
+        {
+          "id": "cloud-erp",
+          "label": "NetSuite or another cloud ERP",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "spreadsheets",
+          "label": "Mainly spreadsheets",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        }
       ]
     },
     {
@@ -95,11 +377,46 @@
       "helper": "A rough band is fine.",
       "type": "single",
       "options": [
-        { "id": "under5", "label": "Under £5m", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "5-20", "label": "£5m to £20m", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "20-100", "label": "£20m to £100m", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "100-500", "label": "£100m to £500m", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "over500", "label": "Over £500m", "weights": { "x3": 0, "intacct": 0 } }
+        {
+          "id": "under5",
+          "label": "Under £5m",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "5-20",
+          "label": "£5m to £20m",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "20-100",
+          "label": "£20m to £100m",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "100-500",
+          "label": "£100m to £500m",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "over500",
+          "label": "Over £500m",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        }
       ]
     },
     {
@@ -108,10 +425,38 @@
       "helper": "Your target go-live date, not when you start looking.",
       "type": "single",
       "options": [
-        { "id": "6m", "label": "Within 6 months", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "6-12m", "label": "6 to 12 months", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "12m-plus", "label": "More than 12 months", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "researching", "label": "Just researching", "weights": { "x3": 0, "intacct": 0 } }
+        {
+          "id": "6m",
+          "label": "Within 6 months",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "6-12m",
+          "label": "6 to 12 months",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "12m-plus",
+          "label": "More than 12 months",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "researching",
+          "label": "Just researching",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        }
       ]
     },
     {
@@ -120,9 +465,30 @@
       "helper": "The person or team who will own it after go-live.",
       "type": "single",
       "options": [
-        { "id": "none", "label": "No dedicated person", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "lead", "label": "A finance systems lead", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "team", "label": "An IT or systems team", "weights": { "x3": 0, "intacct": 0 } }
+        {
+          "id": "none",
+          "label": "No dedicated person",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "lead",
+          "label": "A finance systems lead",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "team",
+          "label": "An IT or systems team",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        }
       ]
     },
     {
@@ -130,159 +496,382 @@
       "text": "Is any of these central to how you operate?",
       "helper": "Select all that apply.",
       "type": "multi",
-      "showIf": { "model": ["distribute", "finserv", "other"] },
-      "exclusive": ["none"],
+      "showIf": {
+        "model": [
+          "distribute",
+          "finserv",
+          "other"
+        ]
+      },
+      "exclusive": [
+        "none"
+      ],
       "options": [
-        { "id": "retail", "label": "Store-based retail with point of sale", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "banking", "label": "Core banking or insurance policy administration", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "construction", "label": "Construction contracts", "weights": { "x3": 0, "intacct": 0 } },
-        { "id": "none", "label": "None of these", "weights": { "x3": 0, "intacct": 0 } }
+        {
+          "id": "retail",
+          "label": "Store-based retail with point of sale",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "banking",
+          "label": "Core banking or insurance policy administration",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "construction",
+          "label": "Construction contracts",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        },
+        {
+          "id": "none",
+          "label": "None of these",
+          "weights": {
+            "x3": 0,
+            "intacct": 0
+          }
+        }
       ]
     }
   ],
   "hardRules": [
     {
       "id": "H1",
-      "when": { "deploy": ["onprem"] },
+      "when": {
+        "deploy": [
+          "onprem"
+        ]
+      },
       "force": "x3",
-      "reason": "Sage Intacct runs only as cloud software, so Sage X3 is the Sage option that can run on-premise or in private hosting.",
-      "verify": true
+      "reason": "Sage Intacct is cloud-only software with no on-premise option, while Sage X3 can run as SaaS, in a private cloud or on-premise."
     },
     {
       "id": "H2",
-      "when": { "stock": ["manufacture"], "model": ["make", "distribute"] },
+      "when": {
+        "stock": [
+          "manufacture"
+        ],
+        "model": [
+          "make",
+          "distribute"
+        ]
+      },
       "force": "x3",
-      "reason": "You need production planning, which Sage X3 provides natively."
+      "reason": "You manufacture with bills of materials, routings or recipes, and Sage X3 supports both process and discrete manufacturing."
     }
   ],
   "overrides": [
     {
       "id": "N1",
-      "when": { "specialist": ["retail", "banking"] },
+      "when": {
+        "specialist": [
+          "retail",
+          "banking"
+        ]
+      },
       "outcome": "not-sage"
     },
     {
       "id": "T1",
-      "when": { "size": ["under5"], "entities": ["one"], "stock": ["none", "simple"], "revenue": { "only": ["oneoff"] } },
+      "when": {
+        "size": [
+          "under5"
+        ],
+        "entities": [
+          "one"
+        ],
+        "stock": [
+          "none",
+          "simple"
+        ],
+        "revenue": {
+          "only": [
+            "oneoff"
+          ]
+        }
+      },
       "outcome": "too-early"
     }
   ],
   "caps": [
     {
       "id": "C1",
-      "when": { "size": ["over500"], "geo": ["six"] },
+      "when": {
+        "size": [
+          "over500"
+        ],
+        "geo": [
+          "six"
+        ]
+      },
       "maxConfidence": "moderate",
       "constraint": {
         "issue": "At this scale, include at least one tier-one ERP in your shortlist so the comparison is complete.",
         "action": "Ask each supplier for reference customers of your size and country spread.",
-        "link": { "type": "anchor", "href": "#questions", "label": "Questions to ask" }
+        "link": {
+          "type": "anchor",
+          "href": "#questions",
+          "label": "Questions to ask"
+        }
       }
     }
   ],
   "gaps": [
     {
       "id": "G1",
-      "when": { "result": ["intacct"], "stock": ["manufacture"] },
-      "severity": "gap",
-      "issue": "Sage Intacct has no native production planning or MRP.",
-      "action": "Plan for a manufacturing add-on, or compare with Sage X3.",
-      "link": { "type": "internal", "href": "/sage-intacct-or-sage-x3/", "label": "Sage Intacct or Sage X3" },
-      "verify": true
+      "when": {
+        "result": [
+          "intacct"
+        ],
+        "stock": [
+          "manufacture"
+        ]
+      },
+      "severity": "possible",
+      "issue": "Manufacturing on Sage Intacct relies on Sage Distribution and Manufacturing Operations, which Sage describes as for discrete manufacturers, or on a marketplace add-on.",
+      "action": "Check UK availability and whether your processes are discrete or process-based, or compare with Sage X3.",
+      "link": {
+        "type": "internal",
+        "href": "/sage-intacct-or-sage-x3/",
+        "label": "Sage Intacct or Sage X3"
+      }
     },
     {
       "id": "G2",
-      "when": { "result": ["intacct"], "stock": ["warehouses"] },
+      "when": {
+        "result": [
+          "intacct"
+        ],
+        "stock": [
+          "warehouses"
+        ]
+      },
       "severity": "possible",
-      "issue": "Complex warehousing usually needs an add-on alongside Sage Intacct.",
-      "action": "Shortlist a warehouse add-on from the marketplace early.",
-      "link": { "type": "internal", "href": "/marketplace/?fn=inventory", "label": "Inventory add-ons" },
-      "verify": true
-    },
-    {
-      "id": "G3",
-      "when": { "result": ["x3"], "revenue": ["subs"] },
-      "severity": "possible",
-      "issue": "Recurring billing in Sage X3 typically needs configuration or an add-on.",
-      "action": "Ask for a demonstration of your renewal and billing cycle.",
-      "link": { "type": "mysoft", "key": "mysoft-x3", "label": "Talk to Mysoft about Sage X3 billing" },
-      "verify": true
-    },
-    {
-      "id": "G4",
-      "when": { "result": ["intacct"], "revenue": ["volume"] },
-      "severity": "possible",
-      "issue": "High order volumes need an integration to your order or ecommerce platform.",
-      "action": "Choose the integration before you fix the project plan.",
-      "link": { "type": "internal", "href": "/marketplace/?fn=ecommerce", "label": "Ecommerce integrations" }
+      "issue": "Advanced warehousing on Sage Intacct uses warehouse technology partners listed on the Sage Intacct Marketplace.",
+      "action": "Shortlist a warehouse partner early and include it in the scope.",
+      "link": {
+        "type": "internal",
+        "href": "/marketplace/#intacct-marketplace",
+        "label": "Sage Intacct Marketplace"
+      }
     },
     {
       "id": "G5",
-      "when": { "geo": ["six"] },
+      "when": {
+        "geo": [
+          "six"
+        ]
+      },
       "severity": "constraint",
       "issue": "Confirm local tax, statutory reporting and language support for each country.",
       "action": "Ask each supplier which countries they have delivered in.",
-      "link": { "type": "anchor", "href": "#questions", "label": "Questions to ask" }
+      "link": {
+        "type": "anchor",
+        "href": "#questions",
+        "label": "Questions to ask"
+      }
     },
     {
       "id": "C1",
-      "when": { "timeline": ["6m"], "result": ["x3"] },
+      "when": {
+        "timeline": [
+          "6m"
+        ],
+        "result": [
+          "x3"
+        ]
+      },
       "severity": "constraint",
-      "issue": "Six months is tight for Sage X3 unless scope is fixed.",
-      "action": "Consider a fixed-scope, pre-configured start such as Mysoft Kickstart.",
-      "link": { "type": "mysoft", "key": "mysoft-rapid-deploy", "label": "Mysoft's fixed-scope Sage X3 approach" }
+      "issue": "Mysoft publishes its Sage X3 delivery options as 80 service days over six calendar months (Kickstart, which excludes manufacturing) up to 140 service days over twelve months.",
+      "action": "Check whether your go-live date allows for the scope you need.",
+      "link": {
+        "type": "mysoft",
+        "key": "mysoft-methods",
+        "label": "Mysoft's Sage X3 delivery options"
+      }
     },
     {
       "id": "C2",
-      "when": { "current": ["sage50-200", "older-erp"] },
+      "when": {
+        "current": [
+          "sage50-200",
+          "older-erp"
+        ]
+      },
       "severity": "constraint",
-      "issue": "Decide early how much history to migrate; it drives cost and timeline.",
+      "issue": "Decide early how much history to migrate; it affects cost and timeline.",
       "action": "Agree a migration policy before you ask for quotes.",
-      "link": { "type": "internal", "href": "/guides/sage-200-replacement/", "label": "Sage 200 replacement guide" }
+      "link": {
+        "type": "internal",
+        "href": "/guides/sage-200-replacement/",
+        "label": "Sage 200 replacement guide"
+      }
     },
     {
       "id": "C3",
-      "when": { "resource": ["none"] },
+      "when": {
+        "resource": [
+          "none"
+        ]
+      },
       "severity": "constraint",
       "issue": "With no dedicated internal owner, you will rely on your partner after go-live.",
-      "action": "Budget for partner-managed support from day one.",
-      "link": { "type": "mysoft", "key": "mysoft-support", "label": "How Mysoft support works" }
+      "action": "Budget for partner support from day one.",
+      "link": {
+        "type": "mysoft",
+        "key": "mysoft-support",
+        "label": "How Mysoft support works"
+      }
     },
     {
       "id": "C4",
-      "when": { "timeline": ["researching"] },
+      "when": {
+        "timeline": [
+          "researching"
+        ]
+      },
       "severity": "constraint",
-      "issue": "Delay has a cost: manual work, slower close, compliance risk.",
+      "issue": "Waiting has a cost in finance team time.",
       "action": "Put a number on it before deciding to wait.",
-      "link": { "type": "internal", "href": "/guides/cost-of-doing-nothing/", "label": "The cost of doing nothing" }
+      "link": {
+        "type": "internal",
+        "href": "/guides/cost-of-doing-nothing/",
+        "label": "The cost of doing nothing"
+      }
     },
     {
       "id": "F1",
-      "when": { "result": ["intacct"], "revenue": ["grants"] },
+      "when": {
+        "result": [
+          "intacct"
+        ],
+        "revenue": [
+          "grants"
+        ]
+      },
       "severity": "note",
-      "issue": "Restricted fund tracking is a strong fit for dimensional accounting.",
-      "action": "Map your funds and grants to dimensions in the design phase.",
-      "link": { "type": "mysoft", "key": "mysoft-industry-nonprofit", "label": "Sage Intacct for non-profits at Mysoft" }
+      "issue": "Mysoft describes Sage Intacct as giving non-profits visibility over funds, grants and donations.",
+      "action": "Map your funds and grants early in the design.",
+      "link": {
+        "type": "mysoft",
+        "key": "mysoft-industry-nonprofit",
+        "label": "Sage Intacct for non-profits at Mysoft"
+      }
     },
     {
       "id": "C2-construction",
-      "when": { "specialist": ["construction"] },
+      "when": {
+        "specialist": [
+          "construction"
+        ]
+      },
       "severity": "note",
-      "issue": "Sage offers construction-specific products; confirm what is available in the UK.",
-      "action": "Ask whether a construction edition or add-on fits better than a general ERP.",
-      "link": { "type": "mysoft", "key": "mysoft-contact", "label": "Ask Mysoft" },
-      "verify": true
+      "issue": "This selector does not assess construction-specific requirements such as contract and job costing.",
+      "action": "Ask each supplier to demonstrate your contract processes with your own data.",
+      "link": {
+        "type": "mysoft",
+        "key": "mysoft-contact",
+        "label": "Ask Mysoft"
+      }
     }
   ],
   "fitProfile": [
-    { "area": "Multi-entity consolidation", "intacct": { "state": "strong", "label": "Strong fit" }, "x3": { "state": "strong", "label": "Strong fit" } },
-    { "area": "Dimensional reporting", "intacct": { "state": "strong", "label": "Strong fit" }, "x3": { "state": "possible", "label": "Possible with work" } },
-    { "area": "Subscription and recurring revenue", "intacct": { "state": "strong", "label": "Strong fit" }, "x3": { "state": "possible", "label": "Possible with work" } },
-    { "area": "Project accounting", "intacct": { "state": "strong", "label": "Strong fit" }, "x3": { "state": "possible", "label": "Possible with work" } },
-    { "area": "Stock and inventory", "intacct": { "state": "possible", "label": "Possible with work" }, "x3": { "state": "strong", "label": "Strong fit" } },
-    { "area": "Manufacturing and MRP", "intacct": { "state": "gap", "label": "Gap (marketplace add-on)" }, "x3": { "state": "strong", "label": "Strong fit" } },
-    { "area": "Warehousing", "intacct": { "state": "gap", "label": "Gap (marketplace add-on)" }, "x3": { "state": "strong", "label": "Strong fit" } },
-    { "area": "Deployment choice", "intacct": { "state": "neutral", "label": "Cloud only" }, "x3": { "state": "neutral", "label": "Cloud or on-premise" } },
-    { "area": "Typical time to go live", "intacct": { "state": "neutral", "label": "Usually shorter; ask for a scoped plan" }, "x3": { "state": "neutral", "label": "Around six months for a fixed-scope start" } }
+    {
+      "area": "Multi-entity consolidation",
+      "intacct": {
+        "state": "strong",
+        "label": "Automated, across currencies"
+      },
+      "x3": {
+        "state": "strong",
+        "label": "Multi-site, multi-currency, multi-country"
+      }
+    },
+    {
+      "area": "Subscription billing and revenue recognition",
+      "intacct": {
+        "state": "strong",
+        "label": "Included"
+      },
+      "x3": {
+        "state": "neutral",
+        "label": "Check in a demo"
+      }
+    },
+    {
+      "area": "Project accounting",
+      "intacct": {
+        "state": "strong",
+        "label": "Included"
+      },
+      "x3": {
+        "state": "neutral",
+        "label": "Check in a demo"
+      }
+    },
+    {
+      "area": "Inventory",
+      "intacct": {
+        "state": "strong",
+        "label": "Across multiple locations"
+      },
+      "x3": {
+        "state": "strong",
+        "label": "Included, with advanced warehousing"
+      }
+    },
+    {
+      "area": "Manufacturing",
+      "intacct": {
+        "state": "possible",
+        "label": "Discrete, via Sage Distribution and Manufacturing Operations or add-ons"
+      },
+      "x3": {
+        "state": "strong",
+        "label": "Process and discrete"
+      }
+    },
+    {
+      "area": "Lot and serial traceability",
+      "intacct": {
+        "state": "neutral",
+        "label": "Check in a demo"
+      },
+      "x3": {
+        "state": "strong",
+        "label": "Included, with batch genealogy"
+      }
+    },
+    {
+      "area": "Making Tax Digital for VAT",
+      "intacct": {
+        "state": "strong",
+        "label": "Submits to HMRC"
+      },
+      "x3": {
+        "state": "strong",
+        "label": "Supported"
+      }
+    },
+    {
+      "area": "Deployment",
+      "intacct": {
+        "state": "neutral",
+        "label": "Cloud only"
+      },
+      "x3": {
+        "state": "neutral",
+        "label": "SaaS, private cloud or on-premise"
+      }
+    }
   ],
   "questionsToAsk": [
     "How many implementations like ours have you delivered in the last two years, and can we speak to two of those customers?",
@@ -292,16 +881,25 @@
     "What does support look like in the first 90 days after go-live, and after that?"
   ],
   "outcomes": {
-    "thresholds": { "strong": 6, "moderate": 3 },
-    "states": ["intacct", "x3", "both", "not-sage", "too-early"],
+    "thresholds": {
+      "strong": 6,
+      "moderate": 3
+    },
+    "states": [
+      "intacct",
+      "x3",
+      "both",
+      "not-sage",
+      "too-early"
+    ],
     "intacct": {
       "headline": "Sage Intacct is the stronger fit",
       "ctaLink": "mysoft-intacct",
       "ctaLabel": "Talk to Mysoft about Sage Intacct",
       "defaultReasons": [
-        "Sage Intacct is finance-first cloud software with strong multi-entity and dimensional reporting.",
-        "Your answers point to a finance and reporting problem more than a supply chain one.",
-        "Sage Intacct projects are usually shorter than full ERP projects."
+        "Sage Intacct automates multi-entity consolidation across currencies.",
+        "Sage Intacct includes subscription billing, revenue recognition and project accounting.",
+        "Sage Intacct is multi-tenant cloud software, updated by Sage."
       ]
     },
     "x3": {
@@ -309,39 +907,39 @@
       "ctaLink": "mysoft-x3",
       "ctaLabel": "Talk to Mysoft about Sage X3",
       "defaultReasons": [
-        "Sage X3 runs finance, supply chain and production in one system.",
-        "Your answers point to operational complexity that a finance-only system would leave to add-ons.",
-        "Sage X3 can run in the cloud or on-premise."
+        "Sage X3 manages finance, supply chain and production in one system.",
+        "Sage X3 includes advanced warehouse management and lot and serial traceability.",
+        "Sage X3 can run as SaaS, in a private cloud or on-premise."
       ]
     },
     "both": {
       "headline": "Both Sage Intacct and Sage X3 could work",
       "ctaLink": "mysoft-contact",
       "ctaLabel": "Talk to Mysoft about both options",
-      "summary": "Your answers do not clearly favour one product. That is common for businesses with light stock and a finance-led brief.",
+      "summary": "Your answers do not clearly favour one product. That usually means light stock and a finance-led brief.",
       "tipIt": [
-        "If stock, warehousing or production will grow in importance over the next three years, lean towards Sage X3.",
+        "If stock, warehousing or production will matter more over the next three years, lean towards Sage X3.",
         "If multi-entity reporting, subscriptions or projects matter more than stock, lean towards Sage Intacct.",
         "If you must run on-premise, Sage X3 is the only option of the two.",
-        "If the budget and timeline are tight, Sage Intacct projects are usually shorter."
+        "Mysoft's published view is that an average Sage Intacct project costs less than an average Sage X3 project because it is faster to deliver."
       ]
     },
     "not-sage": {
       "headline": "Sage may not be the right lead system for you",
       "ctaLink": "mysoft-contact",
       "ctaLabel": "Talk to Mysoft anyway",
-      "summary": "Store-based retail, core banking and insurance policy administration are usually run on a specialist system. Sage can often handle finance alongside it, but it should not be the system you choose first.",
+      "summary": "Store-based retail with point of sale, core banking and insurance policy administration are outside what this selector assesses, so it cannot recommend a Sage product with confidence.",
       "consider": [
-        "Choose the specialist operational system first, then decide how finance will connect to it.",
-        "Ask the specialist vendor which finance systems they integrate with in production today.",
-        "Consider Sage Intacct as the finance layer if you have several entities or complex reporting."
+        "Choose the operational system that runs those processes first, then decide how finance will connect to it.",
+        "Ask that vendor which finance systems they integrate with in production today.",
+        "Consider Sage Intacct as the finance system if you have several entities to consolidate."
       ]
     },
     "too-early": {
       "headline": "Your current system may be enough for now",
       "ctaLink": "mysoft-contact",
       "ctaLabel": "Talk to Mysoft about timing",
-      "summary": "With one entity, simple invoicing and revenue under £5m, a mid-market system may cost more than it saves today.",
+      "summary": "With one entity, one-off invoicing and revenue under £5m, the features that set Sage Intacct and Sage X3 apart, such as multi-entity consolidation, may not pay back yet.",
       "signals": [
         "Month-end close regularly takes more than five working days.",
         "You add a second legal entity or start trading overseas.",
@@ -349,7 +947,102 @@
         "You start billing subscriptions, projects or grants.",
         "Your auditors raise controls or audit trail issues."
       ],
-      "guide": { "href": "/guides/outgrown-xero-quickbooks/", "label": "Read: signs you have outgrown Xero or QuickBooks" }
+      "guide": {
+        "href": "/guides/outgrown-xero-quickbooks/",
+        "label": "Read: signs you have outgrown Xero or QuickBooks"
+      }
     }
-  }
+  },
+  "sources": [
+    {
+      "title": "Sage Intacct multi-entity consolidation",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-us/sage-business-cloud/intacct/product-capabilities/extended-capabilities/consolidation-accounting/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Intacct subscription and recurring billing",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-us/sage-business-cloud/intacct/product-capabilities/extended-capabilities/subscription-billing/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Intacct revenue recognition",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-us/sage-business-cloud/intacct/product-capabilities/extended-capabilities/revenue-recognition/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Intacct inventory management",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-us/sage-business-cloud/intacct/product-capabilities/extended-capabilities/inventory-management/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Distribution and Manufacturing Operations",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-us/sage-business-cloud/intacct/product-capabilities/extended-capabilities/sage-distribution-and-manufacturing-operations/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Intacct Marketplace",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-us/sage-business-cloud/intacct/product-capabilities/extended-capabilities/marketplace/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Submit taxes with Sage Regulatory Reporting (UK help)",
+      "publisher": "Sage Intacct",
+      "url": "https://www.intacct.com/ia/docs/en_GB/help_action/Taxes/Indirect_Tax/VAT_and_GST/Submit_taxes/submit-taxes.htm",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Intacct overview (deployment)",
+      "publisher": "ERP Research",
+      "url": "https://www.erpresearch.com/en-us/sage-intacct-overview",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage X3 ERP for manufacturing and distribution",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-us/sage-business-cloud/sage-x3/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage X3 for process manufacturing",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-gb/sage-business-cloud/sage-x3/industry/process-manufacturing/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage X3 for discrete manufacturing",
+      "publisher": "Sage",
+      "url": "https://www.sage.com/en-gb/sage-business-cloud/sage-x3/industry/manufacturing/",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Is Sage X3 compliant with Making Tax Digital?",
+      "publisher": "Sage Knowledgebase",
+      "url": "https://gb-kb.sage.com/portal/app/portlets/results/view2.jsp?k2dockey=200427112505068",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Intacct vs Sage X3",
+      "publisher": "Mysoft",
+      "mysoftKey": "mysoft-intacct-vs-x3",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Mysoft's implementation methods for Sage X3",
+      "publisher": "Mysoft",
+      "mysoftKey": "mysoft-methods",
+      "accessed": "2026-09-29"
+    },
+    {
+      "title": "Sage Intacct for the not-for-profit industry",
+      "publisher": "Mysoft",
+      "mysoftKey": "mysoft-industry-nonprofit",
+      "accessed": "2026-09-29"
+    }
+  ]
 }

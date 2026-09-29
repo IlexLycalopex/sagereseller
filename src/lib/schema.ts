@@ -19,7 +19,6 @@ export function sitewideGraph() {
       name: 'Jamie Watts',
       jobTitle: 'Managing Director',
       worksFor: { '@id': site.orgId },
-      sameAs: [site.company.linkedin],
     },
     {
       '@type': 'WebSite',

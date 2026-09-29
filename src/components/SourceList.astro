@@ -1,13 +1,20 @@
 ---
 import { fmtDate } from '../lib/format';
-interface Props { sources: { title: string; publisher: string; url: string; accessed: Date }[]; lastReviewed: Date }
+import { mysoftUrl } from '../lib/utm';
+interface Source { title: string; publisher: string; url?: string; mysoftKey?: string; accessed: Date }
+interface Props { sources: Source[]; lastReviewed: Date }
 const { sources, lastReviewed } = Astro.props;
+const path = Astro.url.pathname;
 ---
 <ol class="sources">
   {sources.map((s) => (
-    <li><a href={s.url}>{s.title}</a>, {s.publisher}. Accessed {fmtDate(s.accessed)}.</li>
+    <li>
+      {s.mysoftKey
+        ? <a href={mysoftUrl(s.mysoftKey, path, 'source')} data-mysoft={s.mysoftKey} data-position="source">{s.title}</a>
+        : <a href={s.url}>{s.title}</a>}, {s.publisher}. Accessed {fmtDate(s.accessed)}.
+    </li>
   ))}
 </ol>
 <p class="disclosure-note">
-  Last reviewed {fmtDate(lastReviewed)}. Mysoft is a Sage Partner and has a commercial interest in Sage. Statements not linked to a source reflect Mysoft's implementation experience. <a href="/how-we-compare/">How we compare</a>.
+  Last reviewed {fmtDate(lastReviewed)}. Every factual statement on this page is based on the sources above; where a source is Mysoft's own website, it is labelled as Mysoft. Mysoft is a Sage Partner and has a commercial interest in Sage. <a href="/how-we-compare/">How we compare</a>.
 </p>

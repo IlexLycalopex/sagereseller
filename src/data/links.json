@@ -2,29 +2,135 @@
   "_note": "Mysoft link map (spec Appendix B). URLs taken from mysoftx3.com search listings on 29 Sep 2026. Entries with confirmed:false still need sign-off from the Head of Sales & Marketing (dependency D6). All links are built through src/lib/utm.ts.",
   "base": "https://www.mysoftx3.com",
   "links": {
-    "mysoft-home": { "label": "Mysoft", "path": "/", "confirmed": true },
-    "mysoft-contact": { "label": "Contact Mysoft", "path": "/contact-us/", "confirmed": true },
-    "mysoft-who-we-are": { "label": "Who we are", "path": "/who-we-are/", "confirmed": true },
-    "mysoft-team": { "label": "Meet the team", "path": "/who-we-are/meet-the-team/", "confirmed": true },
-    "mysoft-case-studies": { "label": "Mysoft customers", "path": "/customers/", "confirmed": true },
-    "mysoft-intacct": { "label": "Sage Intacct with Mysoft", "path": "/what-we-do/sage-intacct-solution/", "confirmed": true },
-    "mysoft-intacct-implementation": { "label": "Sage Intacct implementation", "path": "/what-we-do/sage-intacct-solution/sage-intacct-implementation/", "confirmed": true },
-    "mysoft-intacct-support": { "label": "Sage Intacct support", "path": "/what-we-do/sage-intacct-solution/sage-intacct-support-services/", "confirmed": true },
-    "mysoft-intacct-demo": { "label": "Sage Intacct demo", "path": "/demo/sage-intacct-demo/", "confirmed": true },
-    "mysoft-intacct-roi": { "label": "Sage Intacct ROI calculator", "path": "/sage-intacct-roi-calculator/", "confirmed": true },
-    "mysoft-x3": { "label": "Sage X3 with Mysoft", "path": "/what-we-do/sage-x3/sage-x3-implementation/", "confirmed": true },
-    "mysoft-rapid-deploy": { "label": "Sage X3 Kickstart", "path": "/what-we-do/sage-x3/sage-x3-implementation/kickstart/", "confirmed": false },
-    "mysoft-x3-cost": { "label": "Sage X3 cost calculator", "path": "/what-we-do/sage-x3/sage-x3-implementation/toolkit/toolkit-calculator/", "confirmed": true },
-    "mysoft-x3-support": { "label": "Sage X3 support", "path": "/what-we-do/sage-x3/support-services-2/", "confirmed": true },
-    "mysoft-support": { "label": "Mysoft support", "path": "/what-we-do/mysoft-international-support/", "confirmed": true },
-    "mysoft-tco": { "label": "Mysoft cost calculators", "path": "/what-we-do/sage-x3/sage-x3-implementation/toolkit/toolkit-calculator/", "confirmed": false },
-    "mysoft-x3clouddocs": { "label": "X3CloudDocs", "path": "/what-we-do/x3clouddocs/", "confirmed": true },
-    "mysoft-industry-manufacturing": { "label": "Manufacturing", "path": "/industry-hub/manufacturing/", "confirmed": true },
-    "mysoft-industry-distribution": { "label": "Distribution", "path": "/industry-hub/distribution/", "confirmed": true },
-    "mysoft-industry-saas": { "label": "Software and SaaS", "path": "/industry-hub/software-as-a-service-saas/", "confirmed": true },
-    "mysoft-industry-nonprofit": { "label": "Non-profit", "path": "/industry-hub/non-profit/", "confirmed": true },
-    "mysoft-industry-services": { "label": "Professional services", "path": "/industry-hub/professional-services/", "confirmed": true },
-    "mysoft-industry-finance": { "label": "Financial services", "path": "/industry-hub/finance/", "confirmed": true },
-    "mysoft-whitepapers": { "label": "Whitepapers and guides", "path": "/whitepapers-guides/", "confirmed": true }
+    "mysoft-home": {
+      "label": "Mysoft",
+      "path": "/",
+      "confirmed": true
+    },
+    "mysoft-contact": {
+      "label": "Contact Mysoft",
+      "path": "/contact-us/",
+      "confirmed": true
+    },
+    "mysoft-who-we-are": {
+      "label": "Who we are",
+      "path": "/who-we-are/",
+      "confirmed": true
+    },
+    "mysoft-team": {
+      "label": "Meet the team",
+      "path": "/who-we-are/meet-the-team/",
+      "confirmed": true
+    },
+    "mysoft-case-studies": {
+      "label": "Mysoft customers",
+      "path": "/customers/",
+      "confirmed": true
+    },
+    "mysoft-intacct": {
+      "label": "Sage Intacct with Mysoft",
+      "path": "/what-we-do/sage-intacct-solution/",
+      "confirmed": true
+    },
+    "mysoft-intacct-implementation": {
+      "label": "Sage Intacct implementation",
+      "path": "/what-we-do/sage-intacct-solution/sage-intacct-implementation/",
+      "confirmed": true
+    },
+    "mysoft-intacct-support": {
+      "label": "Sage Intacct support",
+      "path": "/what-we-do/sage-intacct-solution/sage-intacct-support-services/",
+      "confirmed": true
+    },
+    "mysoft-intacct-demo": {
+      "label": "Sage Intacct demo",
+      "path": "/demo/sage-intacct-demo/",
+      "confirmed": true
+    },
+    "mysoft-intacct-roi": {
+      "label": "Sage Intacct ROI calculator",
+      "path": "/sage-intacct-roi-calculator/",
+      "confirmed": true
+    },
+    "mysoft-x3": {
+      "label": "Sage X3 with Mysoft",
+      "path": "/what-we-do/sage-x3/sage-x3-implementation/",
+      "confirmed": true
+    },
+    "mysoft-rapid-deploy": {
+      "label": "Sage X3 Kickstart",
+      "path": "/what-we-do/sage-x3/sage-x3-implementation/kickstart/",
+      "confirmed": true
+    },
+    "mysoft-x3-cost": {
+      "label": "Sage X3 cost calculator",
+      "path": "/what-we-do/sage-x3/sage-x3-implementation/toolkit/toolkit-calculator/",
+      "confirmed": true
+    },
+    "mysoft-x3-support": {
+      "label": "Sage X3 support",
+      "path": "/what-we-do/sage-x3/support-services-2/",
+      "confirmed": true
+    },
+    "mysoft-support": {
+      "label": "Mysoft support",
+      "path": "/what-we-do/mysoft-international-support/",
+      "confirmed": true
+    },
+    "mysoft-tco": {
+      "label": "Mysoft cost calculators",
+      "path": "/what-we-do/sage-x3/sage-x3-implementation/toolkit/toolkit-calculator/",
+      "confirmed": false
+    },
+    "mysoft-x3clouddocs": {
+      "label": "X3CloudDocs",
+      "path": "/what-we-do/x3clouddocs/",
+      "confirmed": true
+    },
+    "mysoft-industry-manufacturing": {
+      "label": "Manufacturing",
+      "path": "/industry-hub/manufacturing/",
+      "confirmed": true
+    },
+    "mysoft-industry-distribution": {
+      "label": "Distribution",
+      "path": "/industry-hub/distribution/",
+      "confirmed": true
+    },
+    "mysoft-industry-saas": {
+      "label": "Software and SaaS",
+      "path": "/industry-hub/software-as-a-service-saas/",
+      "confirmed": true
+    },
+    "mysoft-industry-nonprofit": {
+      "label": "Non-profit",
+      "path": "/industry-hub/non-profit/",
+      "confirmed": true
+    },
+    "mysoft-industry-services": {
+      "label": "Professional services",
+      "path": "/industry-hub/professional-services/",
+      "confirmed": true
+    },
+    "mysoft-industry-finance": {
+      "label": "Financial services",
+      "path": "/industry-hub/finance/",
+      "confirmed": true
+    },
+    "mysoft-whitepapers": {
+      "label": "Whitepapers and guides",
+      "path": "/whitepapers-guides/",
+      "confirmed": true
+    },
+    "mysoft-intacct-vs-x3": {
+      "label": "Sage Intacct vs Sage X3 (Mysoft)",
+      "path": "/sage-intacct-vs-sage-x3/",
+      "confirmed": true
+    },
+    "mysoft-methods": {
+      "label": "Mysoft's implementation methods for Sage X3",
+      "path": "/article/mysofts-implementation-methods-for-sage-x3/",
+      "confirmed": true
+    }
   }
 }

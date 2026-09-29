@@ -97,7 +97,7 @@ function fitTable(result: Result, focus: 'intacct' | 'x3' | null): string {
     <tbody>${result.fitProfile
       .map((r) => `<tr><th scope="row">${esc(r.area)}</th><td>${cell(r.intacct)}</td><td>${cell(r.x3)}</td></tr>`)
       .join('')}</tbody></table></div>
-    <p class="small muted" style="margin-top:12px">Fit states are Mysoft's view from implementation experience and are reviewed by Mysoft Consulting.</p>`;
+    <p class="small muted" style="margin-top:12px">Based on Sage's published product information. Sources are listed in the <a href="/sage-intacct-or-sage-x3/#sources">decision guide</a>.</p>`;
 }
 
 const ROLES = ['Chief Financial Officer or Finance Director', 'Financial Controller or Head of Finance', 'Chief Operating Officer or Operations', 'CEO or Managing Director', 'IT or Systems', 'Other'];
