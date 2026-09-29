@@ -34,7 +34,7 @@ describe('utm builder', () => {
     const keys = [
       ...rules.gaps.flatMap((g) => (g.link?.type === 'mysoft' ? [g.link.key as string] : [])),
       ...['intacct', 'x3', 'both', 'not-sage', 'too-early'].map(
-        (o) => (rules.outcomes as Record<string, { ctaLink: string }>)[o].ctaLink,
+        (o) => (rules.outcomes as unknown as Record<string, { ctaLink: string }>)[o].ctaLink,
       ),
     ];
     for (const k of keys) expect(mysoftKeys).toContain(k);

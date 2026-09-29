@@ -139,3 +139,13 @@ describe('URL state', () => {
     expect(encodeAnswers(fixtures[0].answers, rules)).toBe('make,manufacture,2-5,few,oneoff,cloud-pref,sage50-200,20-100');
   });
 });
+
+describe('URL state survives the browser', () => {
+  it('round-trips multi-select answers through URLSearchParams', () => {
+    const answers: Answers = { model: ['distribute'], stock: ['simple'], revenue: ['subs', 'oneoff'] };
+    const qs = new URLSearchParams({ a: encodeAnswers(answers, rules) }).toString();
+    expect(decodeAnswers(new URLSearchParams(qs).get('a'), rules)).toEqual(answers);
+    // Unencoded commas, as the island writes them, must also decode.
+    expect(decodeAnswers(new URLSearchParams(qs.replace(/%2C/g, ',')).get('a'), rules)).toEqual(answers);
+  });
+});

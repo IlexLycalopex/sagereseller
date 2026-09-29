@@ -29,7 +29,7 @@ function urlFor(answers: Answers, step: Step): string {
   const qs = new URLSearchParams();
   if (a) qs.set('a', a);
   qs.set('step', String(step));
-  return `${SELECTOR_PATH}?${qs.toString().replace(/%2C/g, ',').replace(/%2B/g, '+')}`;
+  return `${SELECTOR_PATH}?${qs.toString().replace(/%2C/g, ',')}`;
 }
 
 // Capture landing UTMs once per session so the report request can carry them.
@@ -139,12 +139,11 @@ class Selector {
   }
 
   go(step: Step) {
+    // Record the latest answers on the current entry first, so Back restores them.
+    // The hero's first entry is the home page, which keeps its own URL.
+    if (location.pathname === SELECTOR_PATH) history.replaceState({ sbg: true }, '', urlFor(this.answers, this.step));
     this.step = step;
-    if (this.entry === 'hero' && step !== 'result') {
-      history.pushState({ sbg: true }, '', urlFor(this.answers, step));
-    } else if (this.entry === 'page') {
-      history.pushState({ sbg: true }, '', urlFor(this.answers, step));
-    }
+    if (!(this.entry === 'hero' && step === 'result')) history.pushState({ sbg: true }, '', urlFor(this.answers, step));
     this.render(true);
   }
 

@@ -259,9 +259,10 @@ export function score(input: Answers, rules: Rules): Result {
   };
 }
 
-// URL state: ?a=make,manufacture,2-5,... positional by question order, multi joined by "+".
+// URL state: ?a=make,manufacture,2-5,... positional by question order, multi joined by "."
+// ("+" would be decoded as a space by URLSearchParams).
 export function encodeAnswers(answers: Answers, rules: Rules): string {
-  const parts = rules.questions.map((q) => (answers[q.id] ?? []).join('+'));
+  const parts = rules.questions.map((q) => (answers[q.id] ?? []).join('.'));
   while (parts.length && parts[parts.length - 1] === '') parts.pop();
   return parts.join(',');
 }
@@ -272,7 +273,7 @@ export function decodeAnswers(value: string | null, rules: Rules): Answers {
   value.split(',').forEach((part, i) => {
     const q = rules.questions[i];
     if (!q || !part) return;
-    const valid = part.split('+').filter((id) => q.options.some((o) => o.id === id));
+    const valid = part.split('.').filter((id) => q.options.some((o) => o.id === id));
     if (valid.length === 0) return;
     answers[q.id] = q.type === 'single' ? valid.slice(0, 1) : Array.from(new Set(valid));
   });

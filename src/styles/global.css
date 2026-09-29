@@ -267,7 +267,7 @@ tbody th { font-weight: 500; }
 .compare-table col.c2 { width: 240px; }
 .compare-table col.c4 { width: 170px; }
 .compare-table td.best { color: var(--text-2); }
-.compare-table td.action { text-align: right; }
+.compare-table td.action { text-align: right; white-space: nowrap; }
 .compare-table td.action a { font-weight: 500; }
 .compare-table tbody th { font-weight: 500; }
 @media (max-width: 767px) {

@@ -108,7 +108,7 @@ function reportForm(): string {
   <form class="form-panel" data-report-form novalidate>
     <div>
       <h2>Get the full report</h2>
-      <p class="text-2" style="margin-top:8px">Everything on this page plus detailed fit notes, an indicative timeline and cost ranges, emailed as a PDF-ready report. Your result above stays visible whether or not you ask for it.</p>
+      <p class="text-2" style="margin-top:8px">Everything on this page in one email you can share with your board, plus a link to a Mysoft case study and an offer of a short call for an indicative timeline and cost range. Your result above stays visible whether or not you ask for it.</p>
     </div>
     <div class="form-grid">
       <div class="field"><label for="rf-name">Name</label><input id="rf-name" name="name" autocomplete="name" required /><p class="field-error" id="rf-name-err" hidden></p></div>
