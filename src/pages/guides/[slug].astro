@@ -1,0 +1,69 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Article from '../../layouts/Article.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import SourceList from '../../components/SourceList.astro';
+
+export async function getStaticPaths() {
+  const all = await getCollection('guides');
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content, headings } = await render(entry);
+const related = await getEntry('comparisons', d.relatedComparison);
+if (!related) throw new Error(`Guide ${entry.id}: unknown relatedComparison ${d.relatedComparison}`);
+
+const toc = [
+  ...(d.steps?.length ? [{ id: 'steps', label: 'Step by step' }] : []),
+  ...headings.filter((h) => h.depth === 2).map((h) => ({ id: h.slug, label: h.text })),
+  ...(d.faqs.length ? [{ id: 'faq', label: 'Frequently asked questions' }] : []),
+  { id: 'sources', label: 'Sources' },
+];
+---
+<Article
+  title={d.title}
+  description={d.description}
+  eyebrow="Guide"
+  published={d.published}
+  lastReviewed={d.lastReviewed}
+  reviewer={d.reviewer}
+  crumbs={[{ name: 'Guides', path: '/guides/' }, { name: d.title }]}
+  toc={toc}
+  faqs={d.faqs}
+>
+  <div slot="answer" class="short-answer">
+    <span class="eyebrow">Short answer</span>
+    <p>{d.shortAnswer}</p>
+  </div>
+
+  {d.steps?.length && (
+    <section id="steps">
+      <h2>Step by step</h2>
+      <ol class="steps">{d.steps.map((s) => <li><div><strong>{s.title}</strong><p>{s.body}</p></div></li>)}</ol>
+    </section>
+  )}
+
+  <section class="prose">
+    <Content />
+  </section>
+
+  {d.faqs.length > 0 && (
+    <section id="faq">
+      <h2>Frequently asked questions</h2>
+      <FaqAccordion faqs={d.faqs} />
+    </section>
+  )}
+
+  <section>
+    <CtaBand heading="Next step" text="Get a recommendation based on your own answers, or talk it through with Mysoft." mysoftKey={d.ctaLink} mysoftLabel={d.ctaLabel} position="guide-cta" />
+    <p class="small text-2 mt-20">Related comparison: <a href={`/compare/${related.id}/`}>{related.data.title}</a> · <a href="/which-sage/">Which Sage product is right for you?</a></p>
+  </section>
+
+  <section id="sources">
+    <h2>Sources</h2>
+    <SourceList sources={d.sources} lastReviewed={d.lastReviewed} />
+  </section>
+</Article>

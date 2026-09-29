@@ -1,0 +1,16 @@
+---
+import { mysoftUrl } from '../lib/utm';
+interface Props { heading: string; text?: string; mysoftKey: string; mysoftLabel: string; position?: string; secondaryHref?: string; secondaryLabel?: string }
+const { heading, text, mysoftKey, mysoftLabel, position = 'cta-band', secondaryHref = '/which-sage/', secondaryLabel = 'Take the selector' } = Astro.props;
+const href = mysoftUrl(mysoftKey, Astro.url.pathname, position);
+---
+<div class="cta-band">
+  <div>
+    <h2>{heading}</h2>
+    {text && <p>{text}</p>}
+  </div>
+  <div class="btn-row">
+    <a class="btn btn-ghost" href={secondaryHref}>{secondaryLabel}</a>
+    <a class="btn btn-primary" href={href} data-mysoft={mysoftKey} data-position={position}>{mysoftLabel}</a>
+  </div>
+</div>

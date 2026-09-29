@@ -1,0 +1,29 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+const comparisons = await getCollection('comparisons');
+---
+<Base title="Page not found" description="The page you were looking for is not here. Start the selector, browse the comparisons or open one of the Sage buying guides." noindex>
+  <div class="container narrow doc">
+    <header class="page-head">
+      <span class="eyebrow">Page not found</span>
+      <h1>That page is not here</h1>
+      <p class="lede">It may have moved. These are the most useful places to go next.</p>
+      <div class="btn-row"><a class="btn btn-primary" href="/which-sage/">Start the selector</a><a class="btn btn-ghost" href="/compare/">Browse comparisons</a></div>
+    </header>
+    <div class="grid-2">
+      <div>
+        <h2>Guides</h2>
+        <ul class="list-links mt-20">
+          <li><a href="/sage-intacct-or-sage-x3/">Sage Intacct or Sage X3: how to decide</a></li>
+          {guides.map((g) => <li><a href={`/guides/${g.id}/`}>{g.data.title}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2>Comparisons</h2>
+        <ul class="list-links mt-20">{comparisons.map((c) => <li><a href={`/compare/${c.id}/`}>{c.data.title}</a></li>)}</ul>
+      </div>
+    </div>
+  </div>
+</Base>

@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import Selector from '../../components/Selector.astro';
+import { breadcrumbNode } from '../../lib/schema';
+---
+<Base
+  title="Which Sage product is right for you?"
+  description="Ten short questions on your business model, stock, entities and plans. See whether Sage Intacct, Sage X3 or neither fits, with gaps and supplier questions."
+  schema={[breadcrumbNode([{ name: 'Which Sage?', path: '/which-sage/' }])]}
+>
+  <section class="selector-page">
+    <div class="container">
+      <div class="selector-intro" data-selector-intro>
+        <span class="eyebrow">Selector</span>
+        <h1>Which Sage product is right for you?</h1>
+        <p class="lede">Ten short questions. Your result appears on screen straight away, including when Sage is not the right fit. Nothing is sent anywhere unless you ask for the emailed report.</p>
+      </div>
+      <Selector entry="page" />
+      <p class="small muted mt-20" data-selector-intro>Prefer to read the logic first? The same rules are set out in <a href="/sage-intacct-or-sage-x3/">Sage Intacct or Sage X3: how to decide</a>.</p>
+    </div>
+  </section>
+</Base>

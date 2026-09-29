@@ -1,0 +1,12 @@
+{
+  "name": "Email and Notification Automation (ENA)",
+  "publisher": "Mysoft (X3CloudDocs)",
+  "worksWith": "x3",
+  "function": "notifications",
+  "bestFor": "Sending documents and alerts from Sage X3 automatically",
+  "relationship": "built-by-mysoft",
+  "url": "https://uk-marketplace.sage.com/en-GB/apps/71317/x3clouddocs/features",
+  "mysoftKey": "mysoft-x3clouddocs",
+  "order": 7,
+  "confirmed": true
+}

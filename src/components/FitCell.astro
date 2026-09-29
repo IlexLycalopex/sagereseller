@@ -1,0 +1,11 @@
+---
+import Icon from './Icon.astro';
+import { fitIcon } from '../lib/icons';
+interface Props { state: 'strong' | 'possible' | 'gap' | 'neutral'; text: string; showTag?: boolean }
+const { state, text, showTag = true } = Astro.props;
+const tags = { strong: 'Strong fit', possible: 'Possible with work', gap: 'Gap', neutral: '' };
+---
+<span class={`fit fit-${state}`}>
+  <Icon name={fitIcon[state]} size={16} />
+  <span>{text}{showTag && tags[state] && tags[state] !== text && <span class="fit-tag">{tags[state]}</span>}</span>
+</span>

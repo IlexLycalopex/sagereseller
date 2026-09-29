@@ -1,0 +1,5 @@
+# www to apex is handled by a Cloudflare Redirect Rule on the zone (spec C5),
+# because Pages _redirects cannot match on host.
+/which-sage  /which-sage/  301
+/compare/sage-intacct-vs-sage-x3/  /sage-intacct-or-sage-x3/  301
+/sage-intacct-vs-sage-x3/  /sage-intacct-or-sage-x3/  301

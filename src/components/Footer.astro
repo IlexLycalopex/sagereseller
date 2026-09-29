@@ -1,0 +1,28 @@
+---
+import site from '../data/site.json';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <nav class="footer-links" aria-label="Footer">
+      <a href="/which-sage/">Which Sage</a>
+      <a href="/compare/">Compare</a>
+      <a href="/guides/">Guides</a>
+      <a href="/marketplace/">Marketplace</a>
+      <a href="/about/">About</a>
+    </nav>
+    <p class="footer-disclosure">{site.footerDisclosure}</p>
+    <div class="footer-legal">
+      <a href="/how-we-compare/">How we compare</a>
+      <a href="/privacy/">Privacy</a>
+      <button type="button" data-cookie-settings>Cookie settings</button>
+      <a href="/sitemap.xml">Sitemap</a>
+      <a href="/llms.txt">llms.txt</a>
+    </div>
+    <p class="footer-company">
+      © {year} {site.company.name}. Registered in England and Wales, company number
+      <a href={site.company.companiesHouse}>{site.company.number}</a>. {site.company.address}.
+      Sage, Sage Intacct and Sage X3 are trademarks of The Sage Group plc or its licensors. Other product names are trademarks of their owners.
+    </p>
+  </div>
+</footer>

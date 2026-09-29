@@ -1,0 +1,15 @@
+---
+import { getEntry } from 'astro:content';
+import Portrait from './Portrait.astro';
+const author = await getEntry('authors', 'jamie-watts');
+if (!author) throw new Error('Author jamie-watts missing');
+const a = author.data;
+---
+<aside class="author-box" aria-label="About the author">
+  <Portrait size={64} />
+  <div>
+    <strong>{a.name}, {a.role}</strong>
+    <p>{a.credentials}</p>
+    <p><a href={a.linkedin}>LinkedIn</a> · <a href="/about/">About this guide</a> · <a href="/how-we-compare/">How we compare</a></p>
+  </div>
+</aside>

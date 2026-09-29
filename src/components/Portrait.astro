@@ -1,0 +1,11 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+interface Props { size?: number; class?: string }
+const { size = 88, class: cls } = Astro.props;
+const file = '/images/jamie-watts.jpg';
+const exists = fs.existsSync(path.join(process.cwd(), 'public', file));
+---
+{exists
+  ? <img class:list={['portrait', cls]} src={file} width={size} height={size} alt="Jamie Watts, Managing Director of Mysoft" loading="lazy" decoding="async" />
+  : <span class:list={['portrait', cls]} role="img" aria-label="Jamie Watts">JW</span>}

@@ -1,0 +1,48 @@
+---
+title: "The cost of doing nothing"
+primaryQuery: "cost of delaying erp"
+description: "How to quantify the cost of delaying a new finance or ERP system: manual effort, close speed, errors and compliance risk, with a simple calculator to try."
+shortAnswer: "Waiting feels free, but it is not. Each month on a system you have outgrown costs finance team time, slows the close, and carries error and compliance risk. Put a number on the manual effort first; if it is larger than you expected, the case for waiting needs to be stronger than the case for moving."
+ctaLink: mysoft-contact
+ctaLabel: "Talk to Mysoft about your business case"
+relatedComparison: sage-intacct-vs-netsuite
+order: 7
+phase: 3
+faqs:
+  - q: "How do we build a business case for a new finance system?"
+    a: "Start with the cost of the current position: manual hours, close time, audit and error costs. Then set out the five-year cost of the new system. The case rests on the gap between the two, not on the new system's price alone."
+  - q: "Is it better to wait for our next financial year?"
+    a: "Go-live dates are often timed to a year-end, but that does not mean waiting to start. Work back from the target go-live to find when the project needs to begin."
+  - q: "What if we are just researching?"
+    a: "That is a good time to measure the current cost. It turns a vague sense that things are slow into a figure you can compare with the cost of change."
+sources:
+  - title: "Penalty reform: penalties for failing to submit VAT returns by the due date"
+    publisher: "HMRC Compliance Handbook"
+    url: "https://www.gov.uk/hmrc-internal-manuals/compliance-handbook/ch192010"
+    accessed: 2026-09-29
+  - title: "Sage Intacct"
+    publisher: "Sage"
+    url: "https://www.sage.com/en-gb/sage-business-cloud/intacct/"
+    accessed: 2026-09-29
+author: jamie-watts
+published: 2026-09-29
+lastReviewed: 2026-09-29
+nextReview: 2026-12-29
+---
+import CostOfDelay from '../../components/CostOfDelay.astro';
+
+## Where the cost comes from
+
+- **Manual effort:** rekeying, spreadsheet consolidation, chasing approvals, manual reconciliations.
+- **Close speed:** every extra day at month-end delays the numbers the business runs on.
+- **Errors:** manual processes create errors that take time to find and fix, and some reach customers, suppliers or auditors.
+- **Compliance risk:** late or inaccurate VAT returns, for example, can lead to penalty points and penalties under HMRC's regime.
+- **Key-person risk:** processes that live in one person's spreadsheets stop when that person is away or leaves.
+
+## Try the calculator
+
+<CostOfDelay />
+
+## Using the number
+
+If the annual figure is larger than you expected, compare it with the five-year cost of a new system using the [ERP total cost of ownership guide](/guides/erp-tco/). If it is small, you may be right to wait; the [selector](/which-sage/) will tell you if your current system is likely to be enough for now.

@@ -1,0 +1,13 @@
+---
+import { fmtDate } from '../lib/format';
+interface Props { sources: { title: string; publisher: string; url: string; accessed: Date }[]; lastReviewed: Date }
+const { sources, lastReviewed } = Astro.props;
+---
+<ol class="sources">
+  {sources.map((s) => (
+    <li><a href={s.url}>{s.title}</a>, {s.publisher}. Accessed {fmtDate(s.accessed)}.</li>
+  ))}
+</ol>
+<p class="disclosure-note">
+  Last reviewed {fmtDate(lastReviewed)}. Mysoft is a Sage Partner and has a commercial interest in Sage. Statements not linked to a source reflect Mysoft's implementation experience. <a href="/how-we-compare/">How we compare</a>.
+</p>

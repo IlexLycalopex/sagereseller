@@ -1,0 +1,12 @@
+{
+  "name": "Sage Intacct Marketplace",
+  "publisher": "Sage",
+  "worksWith": "intacct",
+  "function": "marketplace",
+  "bestFor": "Finding integrations for payroll, planning, AP automation, spend, CRM and more",
+  "description": "Sage's own directory of apps and integrations built for Sage Intacct. Filter by business function and check whether a listing is a Sage Intacct Marketplace Partner with a certified integration.",
+  "relationship": "sage",
+  "url": "https://marketplace.intacct.com/",
+  "order": 1,
+  "confirmed": true
+}

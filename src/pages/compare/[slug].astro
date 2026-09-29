@@ -1,0 +1,97 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Article from '../../layouts/Article.astro';
+import FitCell from '../../components/FitCell.astro';
+import FaqAccordion from '../../components/FaqAccordion.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import SourceList from '../../components/SourceList.astro';
+import { mysoftLabel } from '../../lib/utm';
+
+export async function getStaticPaths() {
+  const all = await getCollection('comparisons');
+  return all.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+const { Content, headings } = await render(entry);
+const product = d.sageProduct === 'intacct' ? 'Sage Intacct' : 'Sage X3';
+const related = d.related ? await getEntry('comparisons', d.related) : undefined;
+const ctaLabel = `Talk to Mysoft about ${product}`;
+
+const toc = [
+  { id: 'at-a-glance', label: 'At a glance' },
+  ...headings.filter((h) => h.depth === 2).map((h) => ({ id: h.slug, label: h.text })),
+  { id: 'questions', label: 'Questions to ask both suppliers' },
+  { id: 'faq', label: 'Frequently asked questions' },
+  { id: 'sources', label: 'Sources' },
+];
+---
+<Article
+  title={d.title}
+  description={d.description}
+  eyebrow="Comparison"
+  published={d.published}
+  lastReviewed={d.lastReviewed}
+  reviewer={d.reviewer}
+  crumbs={[{ name: 'Compare', path: '/compare/' }, { name: d.title }]}
+  toc={toc}
+  faqs={d.faqs}
+>
+  <div slot="answer" class="verdict" aria-label="Verdict">
+    <div>
+      <h2>Choose {product} if</h2>
+      <ul>{d.verdict.chooseSage.map((v) => <li>{v}</li>)}</ul>
+    </div>
+    <div>
+      <h2>Choose {d.competitor} if</h2>
+      <ul>{d.verdict.chooseCompetitor.map((v) => <li>{v}</li>)}</ul>
+    </div>
+  </div>
+
+  <section id="at-a-glance">
+    <h2>At a glance</h2>
+    <div class="table-wrap" data-track-table={entry.id}>
+      <table class="data-table">
+        <caption class="visually-hidden">{d.title}: at a glance</caption>
+        <thead><tr><th scope="col">Area</th><th scope="col">{product}</th><th scope="col">{d.competitor}</th></tr></thead>
+        <tbody>
+          {d.table.map((r) => (
+            <tr>
+              <th scope="row">{r.feature}</th>
+              <td><FitCell state={r.sageState} text={r.sage} /></td>
+              <td><FitCell state={r.competitorState} text={r.competitor} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="prose">
+    <Content />
+  </section>
+
+  <section id="questions">
+    <h2>Questions to ask both suppliers</h2>
+    <ol class="questions-list">{d.questions.map((q) => <li>{q}</li>)}</ol>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently asked questions</h2>
+    <FaqAccordion faqs={d.faqs} />
+  </section>
+
+  <section>
+    <CtaBand heading="Not sure yet?" text="Take the selector for a recommendation based on your own answers." mysoftKey={d.ctaLink} mysoftLabel={ctaLabel} position="comparison-cta" />
+    <p class="small text-2 mt-20">
+      Also read: <a href="/sage-intacct-or-sage-x3/">Sage Intacct or Sage X3: how to decide</a>
+      {related && <>{' · '}<a href={`/compare/${related.id}/`}>{related.data.title}</a></>}
+    </p>
+  </section>
+
+  <section id="sources">
+    <h2>Sources</h2>
+    <SourceList sources={d.sources} lastReviewed={d.lastReviewed} />
+  </section>
+</Article>

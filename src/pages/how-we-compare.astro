@@ -1,0 +1,49 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import site from '../data/site.json';
+import { breadcrumbNode } from '../lib/schema';
+---
+<Base
+  title="How we compare"
+  description="The editorial policy behind The Sage Buyer's Guide: the sources we use, what we will not do, how often pages are reviewed and how to report a correction."
+  schema={[breadcrumbNode([{ name: 'How we compare', path: '/how-we-compare/' }])]}
+>
+  <div class="container narrow doc">
+    <Breadcrumbs items={[{ name: 'How we compare' }]} />
+    <header class="page-head">
+      <span class="eyebrow">Editorial policy</span>
+      <h1>How we compare</h1>
+      <p class="lede">This guide is published by Mysoft, a Sage Partner. That is a commercial interest, so we hold ourselves to a clear set of rules.</p>
+    </header>
+    <div class="prose">
+      <h2>Sources we use</h2>
+      <ul>
+        <li>Vendor documentation, product pages and published pricing.</li>
+        <li>Analyst and independent review sites, where they add something vendors do not publish.</li>
+        <li>Mysoft's implementation experience. Where a statement is based on our experience rather than a published source, we say so.</li>
+      </ul>
+      <p>Every comparison and guide lists its sources with the date we accessed them, and shows when it was last reviewed.</p>
+
+      <h2>What we will not do</h2>
+      <ul>
+        <li>Publish claims we cannot verify.</li>
+        <li>Publish prices a vendor has not published.</li>
+        <li>Disparage competitors. We say where another system is stronger, and when it is the better choice.</li>
+        <li>Hide our Sage relationship. It is stated on every page.</li>
+      </ul>
+
+      <h2>Review cadence</h2>
+      <p>Every comparison is reviewed at least quarterly, and within 10 working days of a material vendor change such as a new edition, a pricing change or a discontinued product. Our publishing system flags any page that has gone more than 120 days without review.</p>
+
+      <h2>Corrections</h2>
+      <p>If you think something is wrong or out of date, including if you work for a vendor we compare, email <a href={`mailto:${site.correctionsEmail}`}>{site.correctionsEmail}</a> with the page and the source for the correction. We acknowledge within two working days and correct or respond within 10 working days. Corrections are signed off by Jamie Watts.</p>
+
+      <h2>Who reviews</h2>
+      <p>Pages are written by Jamie Watts and reviewed for product accuracy by Mysoft Consulting. The selector's rules are validated by Mysoft's Head of Consulting before launch and quarterly after that.</p>
+
+      <h2>The selector</h2>
+      <p>The selector runs in your browser. Its rules are published in full in <a href="/sage-intacct-or-sage-x3/">Sage Intacct or Sage X3: how to decide</a>, and it includes a genuine "Sage may not be right for you" outcome.</p>
+    </div>
+  </div>
+</Base>

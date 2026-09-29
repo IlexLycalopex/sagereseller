@@ -1,0 +1,12 @@
+{
+  "name": "Purchase Invoice Automation (PIA)",
+  "publisher": "Mysoft (X3CloudDocs)",
+  "worksWith": "x3",
+  "function": "ap-automation",
+  "bestFor": "Capturing supplier invoices and matching them to orders and receipts in Sage X3",
+  "relationship": "built-by-mysoft",
+  "url": "https://uk-marketplace.sage.com/en-GB/apps/71317/x3clouddocs/features",
+  "mysoftKey": "mysoft-x3clouddocs",
+  "order": 4,
+  "confirmed": true
+}

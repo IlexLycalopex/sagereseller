@@ -1,0 +1,16 @@
+---
+// Equal-weight Accept and Reject; non-essential cookies rejected until chosen.
+---
+<div class="cookie-banner" role="dialog" aria-modal="false" aria-labelledby="cookie-title" hidden data-cookie-banner>
+  <strong id="cookie-title">Cookies on this guide</strong>
+  <p>We use analytics cookies to see which pages help buyers most. They stay off unless you accept. The selector works either way.</p>
+  <div class="cookie-settings" hidden data-cookie-detail>
+    <label class="check"><input type="checkbox" checked disabled /> <span>Essential: remembers your cookie choice. Always on.</span></label>
+    <label class="check"><input type="checkbox" data-cookie-analytics /> <span>Analytics: Google Analytics 4, anonymised usage statistics.</span></label>
+  </div>
+  <div class="btn-row">
+    <button type="button" class="btn btn-ghost" data-cookie="reject">Reject</button>
+    <button type="button" class="btn btn-ghost" data-cookie="accept">Accept</button>
+    <button type="button" class="btn btn-ghost" data-cookie="settings" aria-expanded="false">Settings</button>
+  </div>
+</div>

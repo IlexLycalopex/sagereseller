@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import site from '../data/site.json';
+---
+<Base title="Privacy notice" description="How Mysoft Ltd, as data controller, uses personal data collected on The Sage Buyer's Guide, including report requests, analytics cookies and your rights.">
+  <div class="container narrow doc">
+    <Breadcrumbs items={[{ name: 'Privacy' }]} />
+    <header class="page-head">
+      <span class="eyebrow">Privacy notice</span>
+      <h1>Privacy notice</h1>
+      <p class="lede">This notice explains how {site.company.name} uses personal data collected through sagereseller.com.</p>
+    </header>
+    <div class="prose">
+      <h2>Who we are</h2>
+      <p>{site.company.name} ("Mysoft") is the data controller for this site. Company number {site.company.number}. {site.company.address}. Contact: <a href={`mailto:${site.correctionsEmail}`}>{site.correctionsEmail}</a>.</p>
+
+      <h2>The selector</h2>
+      <p>Your selector answers are processed in your browser. They are held in the page address so you can share or reload your result. They contain no personal data and are not sent to us unless you request the emailed report.</p>
+
+      <h2>Report requests</h2>
+      <p>If you ask for the full report, we collect your name, work email, company, role, your selector answers and result, the page you were on and any campaign tags in the link you arrived from. We use these to:</p>
+      <ul>
+        <li>send you the report you asked for (legitimate interests, and steps taken at your request);</li>
+        <li>record your request in Mysoft's CRM (Zoho CRM) so a consultant can follow up on the report if relevant (legitimate interests);</li>
+        <li>send you occasional marketing only if you ticked the opt-in box (consent, which you can withdraw at any time).</li>
+      </ul>
+      <p>Emails are sent through Resend. The form is protected by Cloudflare Turnstile to prevent spam. The site is hosted on Cloudflare.</p>
+
+      <h2>Analytics cookies</h2>
+      <p>With your consent, we use Google Analytics 4 to understand which pages help buyers. Analytics does not load until you accept, and you can change your choice at any time using "Cookie settings" in the footer. We store your cookie choice in your browser.</p>
+
+      <h2>How long we keep data</h2>
+      <p>Report requests are kept in our CRM for up to three years from your last interaction with Mysoft, unless you ask us to delete them sooner. Marketing consent records are kept for as long as we rely on them.</p>
+
+      <h2>Your rights</h2>
+      <p>You can ask to access, correct or delete your data, object to processing, or withdraw consent, by emailing <a href={`mailto:${site.correctionsEmail}`}>{site.correctionsEmail}</a>. You can also complain to the Information Commissioner's Office at <a href="https://ico.org.uk/">ico.org.uk</a>.</p>
+
+      <p class="small muted">Last updated 29 September 2026. This notice is pending legal review before launch.</p>
+    </div>
+  </div>
+</Base>

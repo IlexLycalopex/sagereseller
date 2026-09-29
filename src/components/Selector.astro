@@ -1,0 +1,20 @@
+---
+// First question is rendered into static HTML so it appears before any JS runs.
+import { rules } from '../lib/rules';
+import { visibleQuestions } from '../lib/scoring';
+import { questionCard } from '../islands/render';
+
+interface Props { entry: 'hero' | 'page' }
+const { entry } = Astro.props;
+const total = visibleQuestions({}, rules).length;
+const html = questionCard({ question: rules.questions[0], index: 1, total, answers: {}, entry });
+---
+<div class="selector" data-selector data-entry={entry}>
+  <div data-card-slot set:html={html} />
+  <noscript>
+    <p class="small muted">The selector needs JavaScript. You can read the same decision rules in <a href="/sage-intacct-or-sage-x3/">Sage Intacct or Sage X3</a>.</p>
+  </noscript>
+</div>
+<script>
+  import '../islands/selector.ts';
+</script>

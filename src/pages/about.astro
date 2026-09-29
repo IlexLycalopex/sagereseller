@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Portrait from '../components/Portrait.astro';
+import MysoftLink from '../components/MysoftLink.astro';
+import site from '../data/site.json';
+import { breadcrumbNode } from '../lib/schema';
+---
+<Base
+  title="About this guide"
+  description="Who publishes The Sage Buyer's Guide, why it exists, and what you should know: it is run by Jamie Watts and Mysoft, a UK Sage Partner with a commercial interest."
+  schema={[breadcrumbNode([{ name: 'About', path: '/about/' }]), { '@type': 'AboutPage', '@id': `${site.url}/about/#page`, about: { '@id': site.personId }, publisher: { '@id': site.orgId } }]}
+>
+  <div class="container narrow doc">
+    <Breadcrumbs items={[{ name: 'About' }]} />
+    <div class="doc-head mt-20">
+      <Portrait />
+      <div class="stack-sm">
+        <span class="eyebrow">About this guide</span>
+        <h1>Who runs this site</h1>
+      </div>
+    </div>
+    <div class="prose">
+      <p>I'm Jamie Watts, Managing Director of Mysoft, a UK Sage Partner based in Hampshire with a presence in Boston. Mysoft has worked with Sage for more than 20 years, was the UK's first Sage X3 partner, implements Sage Intacct and Sage X3, and builds its own Sage marketplace products, including X3CloudDocs.</p>
+
+      <h2>Why this site exists</h2>
+      <p>Choosing a finance or ERP system is a high-stakes decision, and most buyers are comparing options before they talk to anyone. This site shares how we would think about that choice: which Sage product fits which business, where Sage is strong, and where another system may suit you better.</p>
+
+      <h2>What you should know</h2>
+      <ul>
+        <li>We are a Sage Partner, so we have a commercial interest in Sage.</li>
+        <li>Most links point to Mysoft. Where we link to other products, it is because we think they are relevant, and we label any commercial relationship.</li>
+        <li>We will tell you when Sage is not the right fit. A poor fit costs everyone.</li>
+      </ul>
+
+      <h2>How we compare</h2>
+      <p>Our comparisons use vendors' published information and what we have learned from implementations. Each page shows its sources and last-reviewed date. If you spot something out of date, email <a href={`mailto:${site.correctionsEmail}`}>{site.correctionsEmail}</a> and we will correct it. Read the full <a href="/how-we-compare/">editorial policy</a>.</p>
+
+      <h2>About Mysoft</h2>
+      <p>Mysoft implements and supports Sage Intacct and Sage X3 for businesses in the UK and North America, and builds X3CloudDocs, its own automation add-on for Sage X3. You can read more about <MysoftLink to="mysoft-who-we-are" position="about-body">who Mysoft is</MysoftLink>, see <MysoftLink to="mysoft-case-studies" position="about-body">Mysoft's customers</MysoftLink>, or <MysoftLink to="mysoft-team" position="about-body">meet the team</MysoftLink>.</p>
+
+      <h2>Contact</h2>
+      <p>For anything about this guide, email <a href={`mailto:${site.correctionsEmail}`}>{site.correctionsEmail}</a>. To talk about a project, <MysoftLink to="mysoft-contact" position="about-contact">contact Mysoft directly</MysoftLink>.</p>
+      <p class="small muted">{site.company.name}. Company number {site.company.number}. {site.company.address}.</p>
+    </div>
+  </div>
+</Base>

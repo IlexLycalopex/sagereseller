@@ -1,0 +1,39 @@
+---
+import site from '../data/site.json';
+import { mysoftUrl } from '../lib/utm';
+import Icon from './Icon.astro';
+
+const path = Astro.url.pathname;
+const nav = [
+  { href: '/which-sage/', label: 'Which Sage?' },
+  { href: '/compare/', label: 'Compare' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/marketplace/', label: 'Marketplace' },
+];
+const isActive = (href: string) => path === href || path.startsWith(href) || (href === '/which-sage/' && path === '/sage-intacct-or-sage-x3/');
+const contact = mysoftUrl('mysoft-contact', path, 'header-cta');
+---
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" data-header>
+  <div class="container">
+    <a class="wordmark" href="/" aria-label="The Sage Buyer's Guide by Mysoft, home">
+      <span class="wordmark-name">The Sage Buyer's Guide</span>
+      <span class="wordmark-by">by Mysoft</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+      <Icon name="menu" size={20} /><span>Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      {nav.map((n) => (
+        <a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a>
+      ))}
+      <a class="btn-nav" href={contact} data-mysoft="mysoft-contact" data-position="header-cta">Talk to Mysoft</a>
+    </nav>
+  </div>
+</header>
+<div class="disclosure-strip" role="note" aria-label="Disclosure">
+  <div class="container">
+    <span>{site.strapline}</span>
+    <a href="/about/">About this guide</a>
+  </div>
+</div>

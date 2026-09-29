@@ -1,0 +1,41 @@
+---
+// Illustrative cost-of-delay calculator. All figures stay in the browser.
+---
+<div class="form-panel" data-cod>
+  <div>
+    <h3>Cost of waiting calculator</h3>
+    <p class="small muted">Illustrative only. Replace the defaults with your own figures; nothing is sent anywhere.</p>
+  </div>
+  <div class="form-grid">
+    <div class="field"><label for="cod-fte">People in the finance team</label><input id="cod-fte" type="number" min="1" step="1" value="6" inputmode="numeric" /></div>
+    <div class="field"><label for="cod-cost">Average fully loaded cost per person (£ a year)</label><input id="cod-cost" type="number" min="0" step="1000" value="55000" inputmode="numeric" /></div>
+    <div class="field"><label for="cod-share">Share of time on manual work a new system would remove (%)</label><input id="cod-share" type="number" min="0" max="100" step="1" value="20" inputmode="numeric" /><p class="field-hint">Rekeying, spreadsheet consolidation, chasing approvals, manual reconciliations.</p></div>
+    <div class="field"><label for="cod-months">Months you are considering waiting</label><input id="cod-months" type="number" min="1" max="60" step="1" value="12" inputmode="numeric" /></div>
+  </div>
+  <div class="cta-band" aria-live="polite">
+    <div>
+      <p class="small muted">Avoidable manual cost each year</p>
+      <p class="selector-q" data-cod-annual>£66,000</p>
+    </div>
+    <div>
+      <p class="small muted">Cost of waiting for the period chosen</p>
+      <p class="selector-q" data-cod-delay>£66,000</p>
+    </div>
+  </div>
+  <p class="small text-2">This counts staff time only. It leaves out slower decisions, audit fees, errors and compliance risk, so treat it as a floor, not an estimate.</p>
+</div>
+<script>
+  const root = document.querySelector<HTMLElement>('[data-cod]');
+  if (root) {
+    const num = (id: string) => Math.max(0, Number((root.querySelector<HTMLInputElement>(`#${id}`)?.value ?? '0')) || 0);
+    const gbp = new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP', maximumFractionDigits: 0 });
+    const update = () => {
+      const annual = num('cod-fte') * num('cod-cost') * Math.min(num('cod-share'), 100) / 100;
+      const delay = annual * num('cod-months') / 12;
+      root.querySelector('[data-cod-annual]')!.textContent = gbp.format(annual);
+      root.querySelector('[data-cod-delay]')!.textContent = gbp.format(delay);
+    };
+    root.addEventListener('input', update);
+    update();
+  }
+</script>

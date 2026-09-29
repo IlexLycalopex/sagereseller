@@ -1,0 +1,12 @@
+{
+  "name": "Sales Order Automation (SOA)",
+  "publisher": "Mysoft (X3CloudDocs)",
+  "worksWith": "x3",
+  "function": "order-automation",
+  "bestFor": "Turning emailed and PDF customer orders into Sage X3 sales orders",
+  "relationship": "built-by-mysoft",
+  "url": "https://uk-marketplace.sage.com/en-GB/apps/71317/x3clouddocs/features",
+  "mysoftKey": "mysoft-x3clouddocs",
+  "order": 5,
+  "confirmed": true
+}

@@ -1,0 +1,13 @@
+{
+  "name": "X3CloudDocs",
+  "publisher": "Mysoft",
+  "worksWith": "x3",
+  "function": "document-management",
+  "bestFor": "Automating document-heavy processes inside Sage X3",
+  "description": "Mysoft's own add-on for Sage X3, with four modules: Purchase Invoice Automation (PIA), Sales Order Automation (SOA), Electronic Document Management (EDM) and Email and Notification Automation (ENA).",
+  "relationship": "built-by-mysoft",
+  "url": "https://uk-marketplace.sage.com/en-GB/apps/71317/x3clouddocs/features",
+  "mysoftKey": "mysoft-x3clouddocs",
+  "order": 3,
+  "confirmed": true
+}

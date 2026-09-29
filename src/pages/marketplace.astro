@@ -1,0 +1,138 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import AuthorBand from '../components/AuthorBand.astro';
+import MysoftLink from '../components/MysoftLink.astro';
+import Icon from '../components/Icon.astro';
+import { breadcrumbNode } from '../lib/schema';
+
+const all = (await getCollection('marketplace')).sort((a, b) => a.data.order - b.data.order);
+const intacctMp = all.find((m) => m.id === 'sage-intacct-marketplace')!.data;
+const ukMp = all.find((m) => m.id === 'sage-marketplace-uk')!.data;
+const addons = all.filter((m) => m.data.function !== 'marketplace');
+
+const relLabel = { 'built-by-mysoft': 'Built by Mysoft', 'mysoft-partner': 'Mysoft partner', independent: 'Independent', sage: 'Sage' } as const;
+const works = { intacct: 'Sage Intacct', x3: 'Sage X3', both: 'Sage Intacct and Sage X3' } as const;
+const fnLabel: Record<string, string> = {
+  'ap-automation': 'AP automation', 'order-automation': 'Order automation', 'document-management': 'Document management',
+  notifications: 'Notifications', inventory: 'Inventory and warehousing', manufacturing: 'Manufacturing', planning: 'Planning and budgeting',
+  ecommerce: 'Ecommerce', payroll: 'Payroll', reporting: 'Reporting',
+};
+// Functions the selector's gap rules point to are always offered, even before listings exist.
+const fns = ['ap-automation', 'order-automation', 'document-management', 'notifications', 'inventory', 'manufacturing', 'planning', 'ecommerce', 'payroll'];
+const relAttr = (sponsored: boolean) => (sponsored ? 'sponsored noopener' : 'noopener');
+---
+<Base
+  title="Sage marketplaces and add-ons worth knowing"
+  description="The Sage Intacct Marketplace, the Sage Marketplace for Sage X3, and add-ons that fill common gaps, each labelled with its relationship to Mysoft."
+  schema={[breadcrumbNode([{ name: 'Marketplace', path: '/marketplace/' }])]}
+>
+  <div class="container">
+    <header class="page-head">
+      <Breadcrumbs items={[{ name: 'Marketplace' }]} />
+      <h1>The Sage ecosystem: marketplaces and add-ons worth knowing</h1>
+      <p class="lede">Most Sage projects connect at least one add-on. Start with Sage's own marketplaces, then look at add-ons that fill the gaps our selector most often flags. Every listing shows its relationship to Mysoft.</p>
+    </header>
+  </div>
+
+  <section class="section section-first" aria-label="Sage marketplaces">
+    <div class="container grid-2">
+      <div class="panel" id="intacct-marketplace">
+        <span class="card-label">Sage · for Sage Intacct</span>
+        <h2>{intacctMp.name}</h2>
+        <p>{intacctMp.description}</p>
+        <p><strong>How to use it:</strong> start from the gap you need to fill, shortlist two or three listings, and ask your partner which they have implemented.</p>
+        <a class="btn btn-ghost" href={intacctMp.url} target="_blank" rel="noopener" data-marketplace="sage-intacct-marketplace">Visit the marketplace <span class="new-tab">(opens in new tab)</span><Icon name="external" size={16} /></a>
+      </div>
+      <div class="panel" id="uk-marketplace">
+        <span class="card-label">Sage · for Sage X3</span>
+        <h2>{ukMp.name}</h2>
+        <p>{ukMp.description}</p>
+        <p><strong>How to use it:</strong> filter by Sage X3, check UK support for each listing, and confirm the version of Sage X3 it supports.</p>
+        <a class="btn btn-ghost" href={ukMp.url} target="_blank" rel="noopener" data-marketplace="sage-marketplace-uk">Visit the marketplace <span class="new-tab">(opens in new tab)</span><Icon name="external" size={16} /></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="addons-title" data-mp>
+    <div class="container">
+      <h2 id="addons-title">Add-ons we recommend</h2>
+      <div class="stack-sm mt-20">
+        <div class="chip-group" role="group" aria-label="Filter by product">
+          <span class="chip-group-label">Works with</span>
+          <div class="chips">
+            <button type="button" class="chip" data-works="all" aria-pressed="true">All</button>
+            <button type="button" class="chip" data-works="intacct" aria-pressed="false">Sage Intacct</button>
+            <button type="button" class="chip" data-works="x3" aria-pressed="false">Sage X3</button>
+          </div>
+        </div>
+        <div class="chip-group" role="group" aria-label="Filter by function">
+          <span class="chip-group-label">Function</span>
+          <div class="chips">
+            <button type="button" class="chip" data-fn="all" aria-pressed="true">All</button>
+            {fns.map((f) => <button type="button" class="chip" data-fn={f} aria-pressed="false">{fnLabel[f]}</button>)}
+          </div>
+        </div>
+      </div>
+      <p class="visually-hidden" aria-live="polite" data-mp-count></p>
+      <div class="grid-3 mt-20" data-mp-grid>
+        {addons.map((m) => {
+          const d = m.data;
+          return (
+            <div class:list={['card', { x3cd: d.relationship === 'built-by-mysoft' }]} data-item data-item-works={d.worksWith} data-item-fn={d.function}>
+              <span class:list={['card-label', { mysoft: d.relationship === 'built-by-mysoft' }]}>{relLabel[d.relationship]}</span>
+              <span class="card-name">{d.name}</span>
+              <p class="card-desc">{d.bestFor}</p>
+              <div class="card-meta">
+                <span>Publisher: {d.publisher}</span>
+                <span>Works with: {works[d.worksWith]}</span>
+                <span>Function: {fnLabel[d.function]}</span>
+              </div>
+              {d.mysoftKey && <MysoftLink to={d.mysoftKey} position={`marketplace-${m.id}`} class="text-link">{d.name} on mysoftx3.com</MysoftLink>}
+              <a class="text-link" href={d.url} target="_blank" rel={relAttr(d.sponsored)} data-marketplace={m.id}>Marketplace listing <span class="new-tab">(opens in new tab)</span></a>
+            </div>
+          );
+        })}
+      </div>
+      <div class="panel mt-20" data-mp-empty hidden>
+        <p><strong>We are confirming recommended add-ons for this area.</strong> Until then, browse the <a href={intacctMp.url} target="_blank" rel="noopener" data-marketplace="sage-intacct-marketplace">Sage Intacct Marketplace <span class="new-tab">(opens in new tab)</span></a> or the <a href={ukMp.url} target="_blank" rel="noopener" data-marketplace="sage-marketplace-uk">Sage Marketplace <span class="new-tab">(opens in new tab)</span></a>, or <MysoftLink to="mysoft-contact" position="marketplace-empty">ask Mysoft which add-ons we have implemented</MysoftLink>.</p>
+      </div>
+      <p class="small text-2 mt-20">Relationship labels: <strong>Built by Mysoft</strong> means Mysoft owns the product. <strong>Mysoft partner</strong> means Mysoft has a commercial relationship with the publisher; links to those listings carry <code>rel="sponsored"</code> where a referral fee applies. <strong>Independent</strong> means no commercial relationship. We list add-ons that fill a real gap, have UK support, and that Mysoft has implemented at least once.</p>
+    </div>
+  </section>
+  <AuthorBand />
+</Base>
+<script>
+  const root = document.querySelector<HTMLElement>('[data-mp]');
+  if (root) {
+    const params = new URLSearchParams(location.search);
+    let works = params.get('works') ?? 'all';
+    let fn = params.get('fn') ?? 'all';
+    const apply = () => {
+      root.querySelectorAll<HTMLButtonElement>('[data-works]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.works === works)));
+      root.querySelectorAll<HTMLButtonElement>('[data-fn]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.fn === fn)));
+      let shown = 0;
+      root.querySelectorAll<HTMLElement>('[data-item]').forEach((el) => {
+        const w = el.dataset.itemWorks;
+        const ok = (works === 'all' || w === works || w === 'both') && (fn === 'all' || el.dataset.itemFn === fn);
+        el.hidden = !ok;
+        if (ok) shown++;
+      });
+      root.querySelector<HTMLElement>('[data-mp-empty]')!.hidden = shown > 0;
+      root.querySelector<HTMLElement>('[data-mp-count]')!.textContent = `${shown} add-on${shown === 1 ? '' : 's'} shown`;
+      const qs = new URLSearchParams();
+      if (works !== 'all') qs.set('works', works);
+      if (fn !== 'all') qs.set('fn', fn);
+      history.replaceState(null, '', `${location.pathname}${qs.toString() ? `?${qs}` : ''}`);
+    };
+    root.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-works], [data-fn]');
+      if (!b) return;
+      if (b.dataset.works) works = b.dataset.works;
+      if (b.dataset.fn) fn = b.dataset.fn;
+      apply();
+    });
+    apply();
+  }
+</script>

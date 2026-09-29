@@ -1,0 +1,43 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import AuthorBand from '../../components/AuthorBand.astro';
+import { breadcrumbNode } from '../../lib/schema';
+
+const guides = (await getCollection('guides')).sort((a, b) => a.data.order - b.data.order);
+---
+<Base
+  title="Sage buying guides"
+  description="Practical guides for finance leaders choosing Sage: when to move off Xero or Sage 200, what Sage Intacct and Sage X3 cost, TCO and choosing a partner."
+  schema={[breadcrumbNode([{ name: 'Guides', path: '/guides/' }])]}
+>
+  <div class="container">
+    <header class="page-head">
+      <Breadcrumbs items={[{ name: 'Guides' }]} />
+      <h1>Sage buying guides</h1>
+      <p class="lede">Short, practical guides for the questions finance leaders ask before they talk to a supplier. Each opens with the answer.</p>
+    </header>
+  </div>
+  <section class="section">
+    <div class="container">
+      <div class="grid-3">
+        {guides.map((g) => (
+          <div class="card">
+            <span class="card-label">Guide</span>
+            <a class="card-name" href={`/guides/${g.id}/`}>{g.data.title}</a>
+            <p class="card-desc">{g.data.shortAnswer.split('. ')[0]}.</p>
+            <a class="text-link" href={`/guides/${g.id}/`} aria-label={`Read: ${g.data.title}`}>Read the guide</a>
+          </div>
+        ))}
+        <div class="card">
+          <span class="card-label">Decision guide</span>
+          <a class="card-name" href="/sage-intacct-or-sage-x3/">Sage Intacct or Sage X3: how to decide</a>
+          <p class="card-desc">The exact rules our selector uses, set out in full.</p>
+          <a class="text-link" href="/sage-intacct-or-sage-x3/">Read the guide</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <AuthorBand />
+</Base>

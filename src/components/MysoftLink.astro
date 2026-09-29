@@ -1,0 +1,8 @@
+---
+// The only way to link to mysoftx3.com. Adds UTMs and the tracking hook.
+import { mysoftUrl } from '../lib/utm';
+interface Props { to: string; position: string; class?: string }
+const { to, position, class: cls } = Astro.props;
+const href = mysoftUrl(to, Astro.url.pathname, position);
+---
+<a href={href} class={cls} data-mysoft={to} data-position={position}><slot /></a>

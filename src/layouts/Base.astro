@@ -1,0 +1,72 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import site from '../data/site.json';
+import { graph, sitewideGraph } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Full <title> override, e.g. on the home page. */
+  fullTitle?: string;
+  schema?: object[];
+  noindex?: boolean;
+  ogType?: 'website' | 'article';
+}
+const { title, description, fullTitle, schema = [], noindex = false, ogType = 'website' } = Astro.props;
+
+const suffix = ` | ${site.name}`;
+const docTitle = fullTitle ?? ((title + suffix).length <= 60 ? title + suffix : title);
+const canonical = new URL(Astro.url.pathname, site.url).toString();
+const robots = noindex || import.meta.env.PUBLIC_NOINDEX === 'true' ? 'noindex, nofollow' : 'index, follow, max-snippet:-1';
+
+// Licensed webfonts are self-hosted once dependency D4 closes. Until the files
+// exist the system stack is used and nothing 404s.
+const fontsDir = path.join(process.cwd(), 'public', 'fonts');
+const hasFonts = fs.existsSync(path.join(fontsDir, 'fonts.css'));
+const preloads = hasFonts
+  ? ['Pangea-SemiBold.woff2', 'AvenirNext-Regular.woff2'].filter((f) => fs.existsSync(path.join(fontsDir, f)))
+  : [];
+const ogImage = new URL('/images/og-default.png', site.url).toString();
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{docTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={robots} />
+    <link rel="alternate" hreflang="en-GB" href={canonical} />
+    <meta name="author" content="Jamie Watts, Mysoft" />
+    <meta name="theme-color" content="#001A22" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    {preloads.map((f) => <link rel="preload" href={`/fonts/${f}`} as="font" type="font/woff2" crossorigin />)}
+    {hasFonts && <link rel="stylesheet" href="/fonts/fonts.css" />}
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json" set:html={graph([...sitewideGraph(), ...schema])} />
+  </head>
+  <body>
+    <Header />
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+    <CookieBanner />
+    <script>
+      import '../scripts/site.ts';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+---
+// Crawlable version of the selector logic, generated from the same rules file (spec C6).
+import Article from '../layouts/Article.astro';
+import FitCell from '../components/FitCell.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import CtaBand from '../components/CtaBand.astro';
+import SourceList from '../components/SourceList.astro';
+import { rules } from '../lib/rules';
+
+const published = new Date('2026-09-29');
+const lastReviewed = new Date('2026-09-29');
+
+const lean = (w: { x3: number; intacct: number }) => {
+  const d = w.x3 - w.intacct;
+  if (d >= 5) return 'Strongly towards Sage X3';
+  if (d >= 2) return 'Towards Sage X3';
+  if (d <= -5) return 'Strongly towards Sage Intacct';
+  if (d <= -2) return 'Towards Sage Intacct';
+  return 'Neutral';
+};
+const scored = rules.questions.filter((q) => q.options.some((o) => o.weights.x3 !== 0 || o.weights.intacct !== 0));
+const unscored = rules.questions.filter((q) => !scored.includes(q));
+const qText = Object.fromEntries(rules.questions.map((q) => [q.id, q]));
+const optLabel = (qid: string, id: string) => qText[qid]?.options.find((o) => o.id === id)?.label ?? id;
+const describe = (when: Record<string, unknown>) =>
+  Object.entries(when)
+    .map(([k, v]) => {
+      if (k === 'result') return `the result is ${(v as string[]).map((x) => (x === 'x3' ? 'Sage X3' : 'Sage Intacct')).join(' or ')}`;
+      const q = qText[k];
+      if (Array.isArray(v)) return `"${q.text}" is ${v.map((x) => optLabel(k, x)).join(' or ')}`;
+      return `"${q.text}" is only ${(v as { only: string[] }).only.map((x) => optLabel(k, x)).join(' or ')}`;
+    })
+    .join(', and ');
+const t = rules.outcomes.thresholds;
+const sevText = { gap: 'Gap', possible: 'Possible with work', constraint: 'Constraint', note: 'Fit note' } as const;
+
+const faqs = [
+  { q: 'Is Sage Intacct or Sage X3 better?', a: 'Neither is better in general. Sage Intacct is finance-first cloud software for businesses whose complexity is in reporting, entities and revenue. Sage X3 is an ERP that adds supply chain, warehousing and production. The better choice is the one that matches where your complexity sits.' },
+  { q: 'Can Sage Intacct handle inventory?', a: 'Sage Intacct includes inventory features suited to simple finished goods. Multi-warehouse operations, lot and serial traceability and manufacturing usually need a marketplace add-on or Sage X3.' },
+  { q: 'Can Sage X3 run on-premise?', a: 'Yes. Sage X3 can run in the cloud, in private hosting or on-premise. Sage Intacct is available only as cloud software.' },
+  { q: 'Which is quicker to implement?', a: 'Sage Intacct projects are usually shorter because the scope is finance. Sage X3 projects cover operations as well, so they take longer; a fixed-scope, pre-configured start is the fastest route.' },
+  { q: 'What if both products could work for us?', a: 'Decide on where your business will be in three years. If stock, warehousing or production will matter more, lean towards Sage X3. If entities, subscriptions, projects or funds matter more, lean towards Sage Intacct.' },
+];
+
+const toc = [
+  { id: 'glance', label: 'At a glance' },
+  { id: 'signals', label: 'Which answers point where' },
+  { id: 'decided', label: 'When the answer is decided for you' },
+  { id: 'scoring', label: 'How the recommendation is made' },
+  { id: 'gaps', label: 'Gaps and constraints we flag' },
+  { id: 'questions', label: 'Questions to ask any supplier' },
+  { id: 'faq', label: 'Frequently asked questions' },
+  { id: 'sources', label: 'Sources' },
+];
+const sources = [
+  { title: 'Sage Intacct', publisher: 'Sage', url: 'https://www.sage.com/en-gb/sage-business-cloud/intacct/', accessed: new Date('2026-09-29') },
+  { title: 'Sage X3', publisher: 'Sage', url: 'https://www.sage.com/en-gb/products/sage-x3/', accessed: new Date('2026-09-29') },
+];
+---
+<Article
+  title="Sage Intacct or Sage X3: how to decide"
+  description="How to choose between Sage Intacct and Sage X3: the answers that point to each, the rules that decide it outright, and the gaps to plan for."
+  eyebrow="Decision guide"
+  published={published}
+  lastReviewed={lastReviewed}
+  crumbs={[{ name: 'Which Sage?', path: '/which-sage/' }, { name: 'Sage Intacct or Sage X3' }]}
+  toc={toc}
+  faqs={faqs}
+>
+  <div slot="answer" class="short-answer">
+    <span class="eyebrow">Short answer</span>
+    <p>Choose Sage Intacct when your complexity is financial: entities, dimensions, subscriptions, projects or funds. Choose Sage X3 when you also run stock, warehouses or production, or need to run on-premise. If you manufacture, Sage X3 is the Sage answer. This page sets out the exact rules our selector uses.</p>
+    <div class="btn-row"><a class="btn btn-primary" href="/which-sage/">Start the selector</a></div>
+  </div>
+
+  <section id="glance">
+    <h2>At a glance</h2>
+    <div class="table-wrap" data-track-table="sage-intacct-or-sage-x3">
+      <table class="data-table">
+        <caption class="visually-hidden">Sage Intacct and Sage X3 fit profile</caption>
+        <thead><tr><th scope="col">Area</th><th scope="col">Sage Intacct</th><th scope="col">Sage X3</th></tr></thead>
+        <tbody>
+          {rules.fitProfile.map((r) => (
+            <tr><th scope="row">{r.area}</th><td><FitCell state={r.intacct.state} text={r.intacct.label} showTag={false} /></td><td><FitCell state={r.x3.state} text={r.x3.label} showTag={false} /></td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="signals">
+    <h2>Which answers point where</h2>
+    <div class="prose"><p>Each answer adds points to Sage Intacct, Sage X3, or neither. These are the weights our selector uses, validated by Mysoft Consulting. Questions that carry no weight, such as {unscored.map((q) => q.text.toLowerCase().replace('?', '')).join('; ')}, shape the gaps and constraints instead.</p></div>
+    {scored.map((q) => (
+      <div class="mt-20">
+        <h3>{q.text}</h3>
+        <div class="table-wrap mt-20">
+          <table class="data-table">
+            <thead><tr><th scope="col">Answer</th><th scope="col">Leans</th><th scope="col">Sage X3 points</th><th scope="col">Sage Intacct points</th></tr></thead>
+            <tbody>
+              {q.options.map((o) => (
+                <tr><th scope="row">{o.label}</th><td>{q.id === 'deploy' && o.id === 'onprem' ? 'Decides Sage X3 (see below)' : lean(o.weights)}</td><td>{o.weights.x3 > 0 ? `+${o.weights.x3}` : o.weights.x3}</td><td>{o.weights.intacct > 0 ? `+${o.weights.intacct}` : o.weights.intacct}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <section id="decided">
+    <h2>When the answer is decided for you</h2>
+    <div class="prose">
+      <p>Some answers settle the question before any points are counted.</p>
+      <ul>
+        {rules.hardRules.map((h) => <li><strong>Sage X3</strong> when {describe(h.when)}. {h.reason}</li>)}
+        <li><strong>Sage may not be the right lead system</strong> when store-based retail with point of sale, or core banking or insurance policy administration, is central to how you operate. A specialist system usually leads, with Sage possibly handling finance alongside it.</li>
+        <li><strong>Your current system may be enough</strong> when revenue is under £5m, you report on one entity, stock is none or simple, and you invoice one-off sales only.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="scoring">
+    <h2>How the recommendation is made</h2>
+    <div class="prose">
+      <p>After the rules above, the selector adds up the points for each product and looks at the gap between them.</p>
+      <ul>
+        <li>A gap of {t.strong} or more points gives a recommendation with <strong>Strong</strong> confidence.</li>
+        <li>A gap of {t.moderate} to {t.strong - 1} points gives a recommendation with <strong>Moderate</strong> confidence.</li>
+        <li>A gap under {t.moderate} points means <strong>both could work</strong>, and we show what would tip it.</li>
+        <li>For groups with revenue over £500m operating in six or more countries, confidence is capped at Moderate and we suggest including a tier-one ERP in the shortlist.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="gaps">
+    <h2>Gaps and constraints we flag</h2>
+    <div class="table-wrap">
+      <table class="data-table">
+        <thead><tr><th scope="col">When</th><th scope="col">Type</th><th scope="col">What it means</th><th scope="col">What to do</th></tr></thead>
+        <tbody>
+          {rules.gaps.map((g) => (
+            <tr><th scope="row">{describe(g.when).replace(/^./, (c) => c.toUpperCase())}</th><td>{sevText[g.severity]}</td><td>{g.issue}</td><td>{g.action}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="questions">
+    <h2>Questions to ask any supplier</h2>
+    <ol class="questions-list">{rules.questionsToAsk.map((q) => <li>{q}</li>)}</ol>
+  </section>
+
+  <section id="faq">
+    <h2>Frequently asked questions</h2>
+    <FaqAccordion faqs={faqs} />
+  </section>
+
+  <section>
+    <CtaBand heading="Want a view on your own answers?" text="The selector takes about three minutes and shows the result on screen." mysoftKey="mysoft-contact" mysoftLabel="Talk to Mysoft about your shortlist" position="decision-guide-cta" secondaryLabel="Start the selector" />
+  </section>
+
+  <section id="sources">
+    <h2>Sources</h2>
+    <SourceList sources={sources} lastReviewed={lastReviewed} />
+  </section>
+</Article>
